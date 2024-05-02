@@ -19,13 +19,14 @@ class RegisterController extends Controller
             'name' => 'required|string|max:25|unique:users',
             'email' => 'required|string|email|max:20|unique:users',
             'password' => 'required|string|min:8',
+            'phone'    => 'required|string|digits:8',
         ]);
         
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
         $user->hashed_pass = Hash::make($request->password);
-        $user->contact_no = 12345678;
+        $user->contact_no = $request->phone;
         $user->save();
 
         // You may also want to log the user in after registration

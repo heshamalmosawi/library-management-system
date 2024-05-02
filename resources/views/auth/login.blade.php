@@ -20,12 +20,15 @@
         <div class="form-container" id="signup-container">
             <form method="post" action="#">
                 @csrf 
-                <input type="text" placeholder="name" name="name" required>
+                <input type="text" placeholder="Name" name="name" required>
                 <input type="text" placeholder="Email"  name="email" required>
                 <input type="password" placeholder="Password" name="password" required>
+                <input type="text" placeholder="phone number" name="phone" required>
+                
                 <button type="submit" name="signup" id="signup-button">Signup</button>
             </form>
             <div>Already have an account? <a href="#" id="login"><b style="color: red;">login</b></a></div>
+       
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('login-container').style.display = 'block';
