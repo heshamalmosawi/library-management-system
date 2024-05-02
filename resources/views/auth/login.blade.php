@@ -9,11 +9,17 @@
 <body>
     {{-- <div class=form-container1> --}}
         <div class=form-container id='login-container'>
-            <form action="#" method=post>
+            <form action="#" method="post">
                 @csrf
-                <input type="text" placeholder=name name=name required>
-                <input type="password" placeholder=Password name=password required>
-                <button type="submit" name=login>Login</button>
+                <input type="text" placeholder="Name" name="name" required>
+                @error('name')
+                    <div style="color: red;">{{ $message }}</div>
+                @enderror
+                <input type="password" placeholder="Password" name="password" required>
+                @error('password')
+                    <div style="color: red;">{{ $message }}</div>
+                @enderror
+                <button type="submit" name="login">Login</button>
                 <div> Don't have an account? <a href="#" id="signup"><b style="color: red;">sign up</b></a></div>
             </form>
         </div>
@@ -21,14 +27,25 @@
             <form method="post" action="#">
                 @csrf 
                 <input type="text" placeholder="Name" name="name" required>
-                <input type="text" placeholder="Email"  name="email" required>
+                @error('name')
+                    <div style="color: red;">{{ $message }}</div>
+                @enderror
+                <input type="text" placeholder="Email" name="email" required>
+                @error('email')
+                    <div style="color: red;">{{ $message }}</div>
+                @enderror
                 <input type="password" placeholder="Password" name="password" required>
-                <input type="text" placeholder="phone number" name="phone" required>
-                
+                @error('password')
+                    <div style="color: red;">{{ $message }}</div>
+                @enderror
+                <input type="text" placeholder="Phone number" name="phone" required>
+                @error('phone')
+                    <div style="color: red;">{{ $message }}</div>
+                @enderror
                 <button type="submit" name="signup" id="signup-button">Signup</button>
             </form>
             <div>Already have an account? <a href="#" id="login"><b style="color: red;">login</b></a></div>
-       
+        </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('login-container').style.display = 'block';

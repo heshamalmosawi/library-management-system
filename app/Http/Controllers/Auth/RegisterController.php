@@ -16,10 +16,10 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:25|unique:users',
+            'name' => 'required|string|max:25',
             'email' => 'required|string|email|max:20|unique:users',
             'password' => 'required|string|min:8',
-            'phone'    => 'required|string|digits:8',
+            'phone'    => 'required|string|digits:8|unique:users',
         ]);
         
         $user = new User();
