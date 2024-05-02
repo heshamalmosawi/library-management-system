@@ -16,10 +16,10 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:25',
-            'email' => 'required|string|email|max:20|unique:users',
-            'password' => 'required|string|min:8',
-            'phone'    => 'required|string|digits:8|unique:users',
+            'name' => 'required|string|max:25|regex:/^[a-zA-Z\s]+$/',
+            'email' => 'required|string|email|max:30|unique:users|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]{3,10}\.[a-zA-Z]{2,4}$/',
+            'password' => 'required|string|min:8|max|regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*[_#@$%\*\-])(?=.*[0-9])[A-Za-z0-9_#@%\*\-]$/',
+            'phone'    => 'required|string|digits:8|unique:users|regex:/^(3|6|1)/',
         ]);
         
         $user = new User();
