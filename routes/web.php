@@ -19,5 +19,4 @@ Route::get('/', function () {
 });
 
 Route::get("/login", [RegisterController::class, 'showRegistrationForm'])->name('register');
-
-// Route::post('/login', 'Auth\RegisterController@register')->name('register.submit');
+Route::post("/login", [RegisterController::class, 'register'])->name('register');
