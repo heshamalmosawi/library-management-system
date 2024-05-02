@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\auth;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class RegisterController extends Controller
 {
     public function ShowRegistrationForm(){
-        return view('auth\login');
+        return view('auth.login');
     }
 }

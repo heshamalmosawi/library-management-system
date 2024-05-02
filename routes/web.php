@@ -1,7 +1,8 @@
 <?php
+namespace App\Http\Controllers\Auth;
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Auth\RegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +18,6 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get("/login", 'Auth/RegisterController@ShowRegisterForm')->name('register');
+Route::get("/login", [RegisterController::class, 'showRegistrationForm'])->name('register');
 
 // Route::post('/login', 'Auth\RegisterController@register')->name('register.submit');
