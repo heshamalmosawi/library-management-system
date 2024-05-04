@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,12 +21,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get("/login", [RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::post("/login", function (Request $request) {
-    if ($request->input('session') === "login"){
-       return app()->call([RegisterController::class, 'login']);
-    } elseif ($request->input('session' === "register")){
-        return app()->call([RegisterController::class, 'register']);
-    }
-});
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::get("/register", [RegisterController::class, 'showRegistrationForm'])->name('register');
+
 

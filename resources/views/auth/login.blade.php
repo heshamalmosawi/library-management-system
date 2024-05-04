@@ -8,16 +8,16 @@
 </head>
 <body>
     {{-- <div class=form-container1> --}}
-        <div>
+        <div id="login-container">
             <form action="#" method="post" name=session value=login>
                 @csrf
                 <input type="text" placeholder="Name" name="name" required>
                 <input type="password" placeholder="Password" name="password" required>
                 <button type="submit" name="login">Login</button>
-                <div> Don't have an account? <a href="#" id="signup"><b style="color: red;">sign up</b></a></div>
+                {{-- <div> Don't have an account? <a href="register" id="signup"><b style="color: red;">sign up</b></a></div> --}}
             </form>
         </div>
-        <div>
+        {{-- <div id="signup-container">
             <form method="post" action="#" name=session value=register>
                 @csrf 
                 <input type="text" placeholder="Name" name="name" required>
@@ -44,36 +44,36 @@
                 @endif
             </form>
             <div>Already have an account? <a href="#" id="login"><b style="color: red;">login</b></a></div>
-        </div>
+        </div> --}}
         <script>
 
-                document.addEventListener('DOMContentLoaded', function() {
-                document.getElementById('login-container').style.display = 'block';
-                document.getElementById('signup-container').style.display = 'none';
+        //         document.addEventListener('DOMContentLoaded', function() {
+        //         document.getElementById('login-container').style.display = 'block';
+        //         document.getElementById('signup-container').style.display = 'none';
         
-                function showLoginForm() {
-                    document.getElementById('login-container').style.display = 'block';
-                    document.getElementById('signup-container').style.display = 'none';
-                }
+        //         function showLoginForm() {
+        //             document.getElementById('login-container').style.display = 'block';
+        //             document.getElementById('signup-container').style.display = 'none';
+        //         }
 
-                function showSignupForm() {
-                    document.getElementById('login-container').style.display = 'none';
-                    document.getElementById('signup-container').style.display = 'block';
-                }
+        //         function showSignupForm() {
+        //             document.getElementById('login-container').style.display = 'none';
+        //             document.getElementById('signup-container').style.display = 'block';
+        //         }
 
-                document.getElementById('signup').addEventListener('click', function(e) {
-                    showSignupForm();
-                });
+        //         document.getElementById('signup').addEventListener('click', function(e) {
+        //             showSignupForm();
+        //         });
 
-                document.getElementById('login').addEventListener('click', function(e) {
-                    e.preventDefault();
-                    showLoginForm();
-                });
+        //         document.getElementById('login').addEventListener('click', function(e) {
+        //             e.preventDefault();
+        //             showLoginForm();
+        //         });
 
-                if (errorcode) {
-                    showSignupForm();
-                }
-        });
+        //         if (errorcode) {
+        //             showSignupForm();
+        //         }
+        // });
     </script>
 </body>
 </html>
