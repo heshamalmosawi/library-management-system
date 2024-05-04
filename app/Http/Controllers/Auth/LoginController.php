@@ -2,34 +2,59 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+
 
 class LoginController extends Controller
 {
-    public function showLoginPage(){
-        return view("auth.login");
+    /**
+     * Display the login form.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function showLoginForm()
+    {
+        return view('auth.login');
     }
-  
+
+    /**
+     * Handle the login request.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function login(Request $request)
     {
         // Validate the request data
-        $validatedData = $request->validate([
-            'name' => 'required|string',
+        $request->validate([
+            'email' => 'required|email',
             'password' => 'required|string',
         ]);
 
-        // Attempt to authenticate the user
-        if (Auth::attempt(['name' => $validatedData['name'], 'password' => $validatedData['password']])) {
-            // Authentication successful, redirect to the desired page
-            return redirect('/')->with('success', 'Registration successful!');
+        // Get the email and password from the request
+        $credentials = $request->only('email', 'password');
+
+        // Attempt to authenticate the user using the email and password fields
+        $user = User::where('email', $credentials['email'])->first();
+
+        // Check if the user exists and verify the password
+        if ($user && Hash::check($credentials['password'], $user->hashed_pass)) {
+            // Log in the user using the Auth facade
+            Auth::login($user);
+
+            // Redirect to the intended page or home if not intended
+            return redirect()->intended('/');
         }
 
-        // Authentication failed, throw an exception
+        // If authentication fails, return an error message
         throw ValidationException::withMessages([
-            'name' => ['The provided credentials do not match our records.'],
+            'email' => 'The provided credentials do not match our records.',
         ]);
     }
 }

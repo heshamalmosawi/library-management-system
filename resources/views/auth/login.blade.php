@@ -11,7 +11,7 @@
         <div id="login-container">
             <form action="#" method="post" name=session value=login>
                 @csrf
-                <input type="text" placeholder="Name" name="name" required>
+                <input type="text" placeholder="Email" name="email" required>
                 <input type="password" placeholder="Password" name="password" required>
                 <button type="submit" name="login">Login</button>
                 {{-- <div> Don't have an account? <a href="register" id="signup"><b style="color: red;">sign up</b></a></div> --}}
