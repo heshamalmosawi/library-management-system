@@ -21,7 +21,10 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/login', [LoginController::class, 'showLoginPage'])->name('login');
 Route::get("/register", [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post("/register", [RegisterController::class, 'register'])->name('register');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+
 
 
