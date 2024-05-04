@@ -22,13 +22,6 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    /**
-     * Handle the login request.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Illuminate\Validation\ValidationException
-     */
     public function login(Request $request)
     {
         // Validate the request data
@@ -47,9 +40,7 @@ class LoginController extends Controller
         if ($user && Hash::check($credentials['password'], $user->hashed_pass)) {
             // Log in the user using the Auth facade
             Auth::login($user);
-
-            // Redirect to the intended page or home if not intended
-            return redirect()->intended('/');
+            return redirect('/')->with('success', 'login successful');
         }
 
         // If authentication fails, return an error message
