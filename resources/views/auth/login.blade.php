@@ -8,8 +8,8 @@
 </head>
 <body>
     {{-- <div class=form-container1> --}}
-        <div class=form-container id='login-container'>
-            <form action="#" method="post">
+        <div>
+            <form action="#" method="post" name=session value=login>
                 @csrf
                 <input type="text" placeholder="Name" name="name" required>
                 <input type="password" placeholder="Password" name="password" required>
@@ -17,8 +17,8 @@
                 <div> Don't have an account? <a href="#" id="signup"><b style="color: red;">sign up</b></a></div>
             </form>
         </div>
-        <div class="form-container" id="signup-container">
-            <form method="post" action="#">
+        <div>
+            <form method="post" action="#" name=session value=register>
                 @csrf 
                 <input type="text" placeholder="Name" name="name" required>
                 @error('name')

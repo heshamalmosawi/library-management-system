@@ -60,4 +60,23 @@ class RegisterController extends Controller
         return redirect('/')->with('success', 'Registration successful!');
     }
 
+    public function login(Request $request)
+    {
+        // Validate the request data
+        $validatedData = $request->validate([
+            'name' => 'required|string',
+            'password' => 'required|string',
+        ]);
+
+        // Attempt to authenticate the user
+        if (Auth::attempt(['name' => $validatedData['name'], 'password' => $validatedData['password']])) {
+            // Authentication successful, redirect to the desired page
+            return redirect()->intended('/main');
+        }
+
+        // Authentication failed, throw an exception
+        throw ValidationException::withMessages([
+            'name' => ['The provided credentials do not match our records.'],
+        ]);
+    }
 }
