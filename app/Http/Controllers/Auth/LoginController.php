@@ -45,6 +45,11 @@ class LoginController extends Controller
             return redirect('/')->with('success', 'login successful');
         }
         $staffUser = Staff::where('email', $credentials['email']->first());
+        if ($staffUser && Hash::check($credentials['password'], $staffUser->hashed_pass)){
+            Auth::login($staffUser);
+            session(['name'=>$staffUser->name]);
+            return redirect('/')->with('success', 'login successful');
+        }
         // If authentication fails, return an error message
         throw ValidationException::withMessages([
             'email' => 'The provided credentials do not match our records.',
