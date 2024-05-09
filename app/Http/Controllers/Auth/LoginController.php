@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use App\Models\User;
+use App\Models\Staff;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -40,9 +41,10 @@ class LoginController extends Controller
         if ($user && Hash::check($credentials['password'], $user->hashed_pass)) {
             // Log in the user using the Auth facade
             Auth::login($user);
+            session(['name'=>$user->name]);
             return redirect('/')->with('success', 'login successful');
         }
-
+        $staffUser = Staff::where('email', $credentials['email']->first());
         // If authentication fails, return an error message
         throw ValidationException::withMessages([
             'email' => 'The provided credentials do not match our records.',
