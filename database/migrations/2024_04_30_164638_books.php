@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('location');
             $table->unsignedInteger('numOfPages');
             $table->boolean('is_archived');
+            $table->timestamps();
         });
     }
 
