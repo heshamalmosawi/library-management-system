@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id('transaction_id');
             $table->date('return_date');
             $table->double('return_fees', 6, 3);
+            $table->timestamps();
         });
         
         DB::unprepared('

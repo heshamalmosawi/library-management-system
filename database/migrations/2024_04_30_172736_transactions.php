@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('due_date');
             $table->boolean('period_extended');
             $table->boolean('is_returned');
+            $table->timestamps();
         });
     }
 
