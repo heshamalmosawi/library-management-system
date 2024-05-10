@@ -15,8 +15,13 @@
             <p id=isbnvalidate></p>
         <label for="Title">Title</label>
             <input type="text" name="Title" required>
-        <label for="Author">Author</label>
-            <input type="text" name="Author" required>
+            <label for="Author">Author</label>
+        <div id="AuthorOption">
+        <input type="text" placeholder="Author" name="Author[]" required>
+        </div>
+        
+
+
         <label for="Category">Category</label>
             <input type="text" name="Category" required>
         <label for="Description">Description</label>
@@ -26,13 +31,13 @@
 
             <br>
         <button type="button" onclick="callApi()" id=autofillBtn disabled> Autofill </button>
-        <button type="button" onclick="addAuthor()" id=addAuthor > Add authors </button>
-        <button type="button" onclick="RemoveAuthor()" id=RemoveAuthor > Remove authors </button>
+        <button onclick="addAuthor()">Add Author</button>
+    <button onclick="removeAuthor()">Remove Author</button>
 
         <button type="submit">Add book</button>
     </form>
     <script>
-        var numAuthorsOption = 1;
+         var authors=1;
         function validate(isbn){
             var isbnhtml = document.getElementById("isbnvalidate");
             var autofillbtn = document.getElementById("autofillBtn");
@@ -70,9 +75,14 @@
 
                 // fill book form field
                 document.getElementsByName("Title")[0].value = bookInfo.title;
-                numAuthors = bookInfo.authors[0].length;
-                addAuthor()
-                document.getElementsByName("Author")[0].value = bookInfo.authors[0];
+                numAuthors = bookInfo.authors.length;
+                document.getElementsByName("Author[]")[0].value = bookInfo.authors[0];
+                for (let i = 1 ; i < numAuthors; i++)
+                {
+                    addAuthor();
+                    document.getElementsByName("Author[]")[i].value = bookInfo.authors[i];
+                }
+                
                 document.getElementsByName("Category")[0].value = bookInfo.categories[0];
                 document.getElementsByName("Description")[0].value = bookInfo.description;
                 var pic = bookInfo.imageLinks.thumbnail;
@@ -81,9 +91,42 @@
                 } else {
                     // secondAPI()
                 }
-                document.getElementByName("")  
+  
             } catch (error) {
                 console.error('Error fetching book details:', error);
+            }
+        }
+        function addAuthor() {
+            ++authors
+            // Get the container element
+            const container = document.getElementById('AuthorOption');
+            
+            // Create a new input element
+            const inputField = document.createElement('input');
+            
+            // Set the input field attributes
+            inputField.type = 'text';
+            inputField.name = 'Author[]';
+            inputField.placeholder="Author "+authors; 
+            
+            
+            // Add the input field to the container
+            container.appendChild(inputField);
+        }
+
+        // Function to remove the last input text field
+        function removeAuthor() {
+            // Get the container element
+            const container = document.getElementById('AuthorOption');
+            
+            // Get all input fields from the container
+            const inputFields = container.getElementsByTagName('input');
+            
+            // Check if there is more than one input field
+            if (inputFields.length > 1) {
+                // Remove the last input field
+                container.removeChild(inputFields[inputFields.length - 1]);
+                --authors
             }
         }
         // async function secondAPI(){
