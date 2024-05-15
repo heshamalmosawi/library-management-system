@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('book_id')->references('id')->on('books');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->binary('transaction_type')->comment('0: Borrow, 1: Return');
+            $table->binary('transaction_type')->comment('0: Borrow, 1: Reserve');
             $table->date('transaction_date');
             $table->date('due_date');
             $table->boolean('period_extended');
