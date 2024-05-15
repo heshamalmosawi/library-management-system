@@ -30,3 +30,5 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 // change this to middleware for authentication
 Route::get('/addbook', [BookController::class, 'showAddForm'])->name('addbook');
 Route::post('/addbook', [BookController::class, 'addBook'])->name('addbook');
+
+Route::get('/books', [BookController::class, 'allBooksPage'])->name('allBooksPage');

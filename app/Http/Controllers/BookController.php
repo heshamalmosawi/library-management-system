@@ -48,4 +48,8 @@ class BookController extends Controller
         $book->save();
         return redirect('/')->with('success', 'Add book successful!');
     }
+    public function allBooksPage(){
+        $books = Book::all();
+        return view('allbooks', ['books' => $books]);
+    }
 }

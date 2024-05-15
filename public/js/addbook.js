@@ -6,7 +6,7 @@ function validate(isbn) {
     var autofillbtn = document.getElementById("autofillBtn");
 
     // if ISBN is empty, Not a number, or not 13 digits, give validation message and block autofill button.
-    isbn = isbn.trim() // trimming beginning and ending spaces.
+    isbn = isbn.trim(); // trimming beginning and ending spaces.
     if (isbn == "") {
         isbnhtml.innerHTML = "Please enter ISBN!";
         autofillbtn.disabled = true;
@@ -21,7 +21,8 @@ function validate(isbn) {
         isbnhtml.innerHTML = "ISBN should be 13 Digits!";
         autofillbtn.disabled = true;
         return;
-    } else { // if reached this point, then format is valid.
+    } else {
+        // if reached this point, then format is valid.
         isbnhtml.innerHTML = "";
         autofillbtn.disabled = false;
     }
@@ -59,6 +60,13 @@ async function callApi() {
         } else {
             // secondAPI()
         }
+
+        document.getElementsByName("num_of_pages")[0].value =
+            bookInfo.pageCount;
+        document.getElementsByName("publisher")[0].value = bookInfo.publisher;
+
+        let publish_year = new Date(bookInfo.publishedDate).getFullYear();
+        document.getElementsByName("publish_year")[0].value = publish_year;
     } catch (error) {
         console.error("Error fetching book details:", error);
     }

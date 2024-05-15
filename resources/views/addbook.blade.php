@@ -61,7 +61,7 @@
             @enderror
         <br>
         <label for="publish_year">Publish Year</label>
-            <input type="number" name="publish_year" required>
+            <input type="number" name="publish_year" min="1900" max="{{ date('Y') }}" required>
             @error('publish_year')
                 <p class=errors> {{ $message }}</p>
             @enderror
