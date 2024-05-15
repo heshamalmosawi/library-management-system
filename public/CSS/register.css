@@ -10,13 +10,6 @@ h1, h4 {
 }
 
 
-#login-container{
-    margin: 0 auto;
-    width: 500px;
-    text-align: center;
-    padding: 300px;
-    
-}
 #signup-container{
     margin: 0 auto;
     width: 500px;
@@ -148,3 +141,14 @@ button[type="submit"]:hover {
 .fa-search:hover {
   color: #dc5319; 
 }
+.form-search button[type="submit"] {
+    width: 80px; /* Adjust width as needed */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    
+  }
+  
+  

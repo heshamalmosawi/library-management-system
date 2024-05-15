@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add book</title>
-    {{-- <link rel="stylesheet" href="{{ asset('css/style.css') }}"> <!-- Assuming your CSS file is in a folder named 'css' --> --}}
+     <link rel="stylesheet" href="{{ asset('CSS/addbook.css') }}"> 
 </head>
 <style>
     .errors {
