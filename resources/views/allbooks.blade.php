@@ -37,18 +37,38 @@
     </style>
 </head>
 <body>
-    <div id=filterbar></div>
-    <div id=allbooks>
-        @foreach($books as $book)
-            <div class=singlebook name="book_{{$book->book_id}}">
-                <a href="/book?q={{$book->ISBN}}">
+    <div id=filterbar>
+    <form method="GET">
+        <label for="category">Category:</label>
+        <select name="category" id="category">
+            <option value="">All</option>
+            @foreach($categories as $category)
+                <option value="{{ $category }}" {{ request('category') == $category ? 'selected' : '' }}>{{ $category }}</option>
+            @endforeach
+        </select>
 
-                    <img src="{{$book->bookcover_url}}" alt="{{$book->title}} book cover image" class=bookcover>
-                    <p>{{ $book->title }} </p>
-                    <p> By: {{ $book -> author}}</p>
-                </a>
+        <label for="publish_date">Publish Date:</label>
+        <select name="publish_date" id="publish_date">
+            <option value="">All</option>
+            @foreach($publish_dates as $publish_date)
+                <option value="{{ $publish_date }}" {{ request('publish_date') == $publish_date ? 'selected' : '' }}>{{ $publish_date }}</option>
+            @endforeach
+        </select>
 
-            </div>
-        @endforeach
+        <button type="submit">Filter</button>
+    </form>
     </div>
+    <div id="allbooks">
+
+
+    @foreach($books as $book)
+        <div class="singlebook" name="book_{{$book->book_id}}">
+            <a href="/book?q={{$book->ISBN}}">
+                <img src="{{$book->bookcover_url}}" alt="{{$book->title}} book cover image" class="bookcover">
+                <p>{{ $book->title }}</p>
+                <p>By: {{ $book->author }}</p>
+            </a>
+        </div>
+    @endforeach
+</div>
 </body>

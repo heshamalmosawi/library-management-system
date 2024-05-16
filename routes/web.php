@@ -32,3 +32,7 @@ Route::get('/addbook', [BookController::class, 'showAddForm'])->name('addbook');
 Route::post('/addbook', [BookController::class, 'addBook'])->name('addbook');
 
 Route::get('/books', [BookController::class, 'allBooksPage'])->name('allBooksPage');
+Route::get('/category', [BookController::class, 'showCategories'])->name('showCategories');
+// routes/web.php
+Route::get('/category/{category}', [BookController::class, 'showBooksByCategory'])->name('showBooksByCategory');
+

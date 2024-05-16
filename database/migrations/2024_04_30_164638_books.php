@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('author', 40);
             $table->string('bookcover_url', 255);
             $table->string('publisher', 20);
+            $table->string('category', 30);
             $table->date('publish_date');
             $table->string('abstract', 255);
             $table->unsignedInteger('available_copies');
