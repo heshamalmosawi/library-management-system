@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add book</title>
-     <link rel="stylesheet" href="{{ asset('CSS/addbook.css') }}"> 
+     <link rel="stylesheet" href="{{ asset('css/addbook.css') }}"> 
 </head>
 <style>
     .errors {
@@ -12,6 +12,7 @@
     }
 </style>
 <div>
+    @include('header')
     <!-- Nothing worth having comes easy. - Theodore Roosevelt -->
     <form method="POST" action="#">
         @csrf
@@ -32,26 +33,26 @@
             @error('Author')
                 <p class=errors> {{ $message }}</p>
             @enderror
-<br>
+        <br>
         <label for="Category">Category</label>
             <input type="text" name="Category" required>
             @error('Category')
                 <p class=errors> {{ $message }}</p>
             @enderror
-<br>
+        <br>
         <label for="Description">Description</label>
             <textarea name="Description" required></textarea>
             @error('Description')
                 <p class=errors> {{ $message }}</p>
             @enderror
-<br>
+        <br>
 
         <label for="BookCover">Book Cover URL</label>
             <input type="text" name="BookCover" required>
             @error('BookCover')
                 <p class=errors> {{ $message }}</p>
             @enderror
-    <br>    
+        <br>    
         
 
         <label for="publisher">Publisher</label>
@@ -84,9 +85,7 @@
             <input type="number" name="num_of_pages" required>
             @error('num_of_pages')
                 <p class=errors> {{ $message }}</p>
-            @enderror
-
-        
+            @enderror        
         <br>
         <button type="button" onclick="callApi()" id=autofillBtn disabled> Autofill </button>
         <button type=button onclick="addAuthor()">Add Author</button>

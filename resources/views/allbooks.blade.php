@@ -29,7 +29,6 @@
         }
         body{
             height:100%;
-            display: flex
         }
         html{
             height: 100%;
@@ -37,6 +36,7 @@
     </style>
 </head>
 <body>
+    @include('header')
     <div id=filterbar>
     <form method="GET">
         <label for="category">Category:</label>

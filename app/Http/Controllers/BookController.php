@@ -49,43 +49,46 @@ class BookController extends Controller
         $book->save();
         return redirect('/')->with('success', 'Add book successful!');
     }
+
     public function allBooksPage(Request $request){
-    // Get all books
-    $query = Book::query();
+        // Get all books
+        $query = Book::query();
 
-    // Apply category filter if selected
-    if ($request->filled('category')) {
-        $query->where('category', $request->input('category'));
+        // Apply category filter if selected
+        if ($request->filled('category')) {
+            $query->where('category', $request->input('category'));
+        }
+
+        // Apply publish date filter if selected
+        if ($request->filled('publish_date')) {
+            $query->where('publish_date', $request->input('publish_date'));
+        }
+
+        // Retrieve filtered books or all books if no filters provided
+        $books = $query->get();
+
+        // Pass books and other necessary data to the view
+        return view('allbooks', [
+            'books' => $books,
+            'categories' => Book::distinct()->pluck('category'),
+            'publish_dates' => Book::distinct()->pluck('publish_date')
+        ]);
     }
 
-    // Apply publish date filter if selected
-    if ($request->filled('publish_date')) {
-        $query->where('publish_date', $request->input('publish_date'));
-    }
-
-    // Retrieve filtered books or all books if no filters provided
-    $books = $query->get();
-
-    // Pass books and other necessary data to the view
-    return view('allbooks', [
-        'books' => $books,
-        'categories' => Book::distinct()->pluck('category'),
-        'publish_dates' => Book::distinct()->pluck('publish_date')
-    ]);
-    }
     public function showCategories()
-{
-    // Retrieve all categories from the books table
-    $categories = Book::distinct()->pluck('category');
+    {
+        // Retrieve all categories from the books table
+        $categories = Book::distinct()->pluck('category');
 
-    return view('category', ['categories' => $categories]);
-}
-public function showBooksByCategory($category)
-{
-    // Retrieve all books that belong to the given category
-    $books = Book::where('category', $category)->get();
+        return view('category', ['categories' => $categories]);
+    }  
+    
+    public function showBooksByCategory($category)
+    {
+        // Retrieve all books that belong to the given category
+        $books = Book::where('category', $category)->get();
 
-    return view('bookbycategory', ['category' => $category, 'books' => $books]);
-}
+        return view('bookbycategory', ['category' => $category, 'books' => $books]);
+    }
 
 }
