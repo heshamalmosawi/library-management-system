@@ -14,7 +14,7 @@
 <div>
     @include('header')
     <!-- Nothing worth having comes easy. - Theodore Roosevelt -->
-    <form method="POST" action="#">
+    <form method="POST" class="inputform" action="#">
         @csrf
         <label for="ISBN">ISBN</label>
             <input type="text" name="ISBN" id=ISBN onkeyup="validate(this.value)" placeholder=ISBN-13 required>

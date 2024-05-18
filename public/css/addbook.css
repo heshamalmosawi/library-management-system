@@ -27,7 +27,7 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #da0a0a; /
 }
-form{
+.inputform{
     margin: 0 auto;
     width: 500px;
     text-align: center;
