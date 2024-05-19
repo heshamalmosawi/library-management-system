@@ -68,14 +68,15 @@
 
 
     @foreach($books as $book)
-        <div class="singlebook" name="book_{{$book->book_id}}">
-            <a href="/book?q={{$book->ISBN}}">
-                <img src="{{$book->bookcover_url}}" alt="{{$book->title}} book cover image" class="bookcover">
-                <p>{{ $book->title }}</p>
-                <p>By: {{ $book->author }}</p>
-            </a>
-        </div>
-    @endforeach
+    <div class="singlebook" name="book_{{$book->book_id}}">
+        <a href="{{ route('book.show', $book->ISBN) }}">
+            <img src="{{$book->bookcover_url}}" alt="{{$book->title}} book cover image" class="bookcover">
+            <p>{{ $book->title }}</p>
+            <p>By: {{ $book->author }}</p>
+            <p>category: {{$book->category}}</p>
+        </a>
+    </div>
+@endforeach
     
 
 </div>

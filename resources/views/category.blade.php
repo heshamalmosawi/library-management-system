@@ -6,6 +6,8 @@
     <title>category</title>
 </head>
 <body>
+@include('header')
+
 <h1>Categories</h1>
 
 <ul>

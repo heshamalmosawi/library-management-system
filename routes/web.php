@@ -35,4 +35,6 @@ Route::get('/books', [BookController::class, 'allBooksPage'])->name('allBooksPag
 Route::get('/category', [BookController::class, 'showCategories'])->name('showCategories');
 // routes/web.php
 Route::get('/category/{category}', [BookController::class, 'showBooksByCategory'])->name('showBooksByCategory');
+Route::get('/book/{book}', [BookController::class, 'show'])->name('book.show');
+
 

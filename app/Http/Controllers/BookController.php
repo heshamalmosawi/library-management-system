@@ -51,7 +51,19 @@ class BookController extends Controller
         $book->save();
         return redirect('/')->with('success', 'Add book successful!');
     }
+    public function show($book)
+    {
+        // Assuming 'book' is the primary key
+        $book = Book::where('ISBN', $book)->firstOrFail();
+        return view('showbook', compact('book'));
+    }
+    // public function showBooksByCategory($category)
+    // {
+    //     // Retrieve all books that belong to the given category
+    //     $books = Book::where('category', $category)->get();
 
+    //     return view('bookbycategory', ['category' => $category, 'books' => $books]);
+    // }
     public function allBooksPage(Request $request)
     {
         // Get all books
