@@ -33,7 +33,7 @@
  
 
 
-        <button type="submit">Filter</button> 
+        <button type="submit" class="sub">Filter</button> 
     </form>
     </div>
     <div id="allbooks">
@@ -44,8 +44,8 @@
         <a href="{{ route('book.show', $book->ISBN) }}">
             <img src="{{$book->bookcover_url}}" alt="{{$book->title}} book cover image" class="bookcover">
             <p>{{ $book->title }}</p>
-            <p>By: {{ $book->author }}</p>
-            <p>category: {{$book->category}}</p>
+            {{-- <p>By: {{ $book->author }}</p>
+            <p>category: {{$book->category}}</p> --}}
         </a>
     </div>
 @endforeach

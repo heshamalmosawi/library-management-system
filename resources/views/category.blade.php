@@ -14,18 +14,18 @@
     
 
     <div class="card">
-        <h2>Card Title</h2>
-        <p>This is a card description. It can contain text, images, or any other HTML elements.</p>
-        <button class="btn">Click Me</button>
-        <ul>
+        
         @foreach($categories as $category)
-        <li><a href="{{ route('showBooksByCategory', ['category' => $category]) }}">{{ $category }}</a></li>
+        <div class="category-card">
+            <a href="{{ route('showBooksByCategory', ['category' => $category]) }}">{{ $category }}</a>
+        </div>
     @endforeach
-        </ul>
+    
+    
     </div>
 </div>
 
-
+@include('footer')
    
 </body>
 </html>

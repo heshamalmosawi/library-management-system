@@ -11,7 +11,7 @@ h1, h4 {
   margin: 0 auto;
   width: 500px;
   text-align: center;
-  padding: 300px;
+  margin-top: 10%;
 }
 
 input[type="text"],
@@ -53,6 +53,3 @@ button[type="submit"]:hover {
 }
 
 
-* {
-  font-family: "TEKO", "sans-serif";
-}

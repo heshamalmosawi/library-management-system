@@ -1,17 +1,18 @@
 body {
-    font-family: Arial, sans-serif;
     background-color: #f8f9fa;
     margin: 0;
     padding: 0;
 }
 
 .container {
-    max-width: 800px;
+    width: 1500px;
     margin: 50px auto;
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    min-height: 700px;
+    
 }
 
 h1 {
@@ -30,6 +31,10 @@ p {
     margin-top: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-height: 550px;
+    display:flex;
+justify-content: space-between;
+flex-wrap: wrap;
 }
 
 .card h2 {
@@ -40,18 +45,15 @@ p {
     color: #555;
 }
 
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-top: 10px;
-    background-color: #007bff;
-    color: #fff;
-    text-align: center;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background-color 0.3s;
-}
 
-.btn:hover {
-    background-color: #0056b3;
+.category-card{
+flex-wrap: wrap;
+background-color: aqua  ;
+width: 22%;
+text-align: center;
+margin: 0 auto;
+
+}
+.card a{
+    text-decoration: none;
 }

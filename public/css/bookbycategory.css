@@ -5,11 +5,11 @@
     align-items: center;
     flex-wrap: wrap;
     padding: 3%;
-    
+  
     
 }
 .singlebook{
-     width: 150px;
+    width: 150px;
     height: 250px;
     text-align: center;
     border: 1px solid #ccc;
@@ -19,44 +19,19 @@
     margin-top: 20px;
     margin-right: 30px;
     margin-left: 30px;
-    
+  
 }
 .singlebook a{
     text-decoration: none;
 }
-
-#filterbar{
-    height:75%;
-    width:20%;
-    margin: 0 auto;
-    padding: 1%;
-    border: 1px solid #ccc;
-    border-radius: 5%;
-    box-shadow: 0 5px 5px #ed5f0e ;
-    margin-top: 20px;
-    display: flex;
-
-    
+h1{
+    text-align: center  ;
+ 
 }
-.sub{
-    background-color: #ed5f0e;
-    margin-right: 30%;
-    margin-left: 30%;
-    margin-top: 20px;
-    width: 30%;
-}
-
-
-
 p
 {
     font-size: 15px; 
   color: #ef5959; 
-  
-}
-label{
-    
-    color: #333; 
-    margin-bottom: 5px; 
-    display: inline-block; 
+  text-decoration: none;
+
 }

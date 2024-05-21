@@ -33,7 +33,7 @@
    overflow: hidden;
    position: fixed;
    bottom: 0;
-   
+   width: 100%;
 }
 
 .form-search{
@@ -55,4 +55,18 @@
    border-radius: 5px;
    box-sizing: border-box;
   
+}
+button[type="submit"]:hover {
+   background-color: #da0a0a; /
+}
+
+
+.fa-search {
+ font-size: 20px;
+ color: #000000; 
+ text-decoration: none; 
+}
+
+.fa-search:hover {
+ color: #dc5319; 
 }
