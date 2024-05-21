@@ -24,7 +24,7 @@
     <label for="publish_date">Publish Date:</label>
     <br>
     <label for="start_date">Start Date:</label>
-    <input type="number" name="start_date" id="start_date" value="{{ request('start_date') }}" min="1900" max="2024">
+    <input type="number" name="start_date" id="start_date" value="{{ request('start_date')}}" min="1900" max="2024">
     <span id="start_date_error" style="color: red;"></span>
 
     <label for="end_date">End Date:</label>
@@ -56,6 +56,9 @@
 
 
 <script>
+    document.getElementById("start_date").defaultValue = "1900";
+    document.getElementById("end_date").defaultValue = "2024";
+
 function validateDateRange() {
     var startDate = parseInt(document.getElementById("start_date").value);
     var endDate = parseInt(document.getElementById("end_date").value);

@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BookController;
 
 /*
@@ -38,3 +39,7 @@ Route::get('/category/{category}', [BookController::class, 'showBooksByCategory'
 Route::get('/book/{book}', [BookController::class, 'show'])->name('book.show');
 
 
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'showProfileForm'])->name('profile.show');
+    Route::post('/profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
+});
