@@ -2,11 +2,13 @@
 namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +41,14 @@ Route::get('/category/{category}', [BookController::class, 'showBooksByCategory'
 Route::get('/book/{book}', [BookController::class, 'show'])->name('book.show');
 
 
-Route::middleware('auth')->group(function () {
+Route::post('/borrow', [TransactionController::class, 'borrowbook'])->name('borrowbook');
+
+Route::middleware(['auth'])->group(function(){
+    // Route::middleware(['student'])->group(function(){
+        Route::get('/borrow', [TransactionController::class, 'showBorrow']);
+        // dd(Auth::check());
+
+    // });
     Route::get('/profile', [ProfileController::class, 'showProfileForm'])->name('profile.show');
     Route::post('/profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
 });

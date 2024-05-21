@@ -19,6 +19,5 @@ class TransactionController extends Controller
         $transaction = new Transactions();
         
         $transaction->book_id = $foundbook->book_id;
-        dd($transaction->id);
     }
 }
