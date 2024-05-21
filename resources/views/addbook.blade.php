@@ -16,17 +16,17 @@
     <!-- Nothing worth having comes easy. - Theodore Roosevelt -->
     <form method="POST" class="inputform" action="#">
         @csrf
-        <label for="ISBN">ISBN</label>
+        <label for="ISBN"></label>
             <input type="text" name="ISBN" id=ISBN onkeyup="validate(this.value)" placeholder=ISBN-13 required>
             <p id=isbnvalidate> </p>
             @error('ISBN')
             <p class=errors> {{ $message }}</p>
             @enderror
-        <br>
-        <label for="Title">Title</label>
-            <input type="text" name="Title" required>
-        <br>
-        <label for="Author">Author</label>
+        
+        <label for="Title"></label>
+            <input type="text"placeholder="Title" name="Title" required>
+        
+        <label for="Author"></label>
             <div id="AuthorOption">
                 <input type="text" placeholder="Author" name="Author[]" required>
             </div>
@@ -34,29 +34,29 @@
                 <p class=errors> {{ $message }}</p>
             @enderror
         <br>
-        <label for="Category">Category</label>
-            <input type="text" name="Category" required>
+        <label for="Category"></label>
+            <input type="text" name="Category" placeholder="Category" required>
             @error('Category')
                 <p class=errors> {{ $message }}</p>
             @enderror
         <br>
-        <label for="Description">Description</label>
-            <textarea name="Description" required></textarea>
+        <label for="Description"></label>
+        <input type="text" name="Description" placeholder="Description" required>
             @error('Description')
                 <p class=errors> {{ $message }}</p>
             @enderror
         <br>
 
-        <label for="BookCover">Book Cover URL</label>
-            <input type="text" name="BookCover" required>
+        <label for="BookCover"></label>
+            <input type="text" name="BookCover"placeholder="Book Cover URL" required>
             @error('BookCover')
                 <p class=errors> {{ $message }}</p>
             @enderror
         <br>    
         
 
-        <label for="publisher">Publisher</label>
-            <input type="text" name="publisher" required>
+        <label for="publisher"></label>
+            <input type="text" name="publisher" placeholder="Publisher" required>
             @error('publisher')
                 <p class=errors> {{ $message }}</p>
             @enderror
@@ -67,31 +67,32 @@
                 <p class=errors> {{ $message }}</p>
             @enderror
 
-        <br>
+        <br><br>
         <label for="total_copies">Total Copies</label>
-            <input type="number" name="total_copies" required>
+            <input type="number" name="total_copies"id="num_of_pages" min="0" step="1" required>
             @error('total_copies')
                 <p class=errors> {{ $message }}</p>
             @enderror
         
-        <br>
-        <label for="location">Branch Location</label>
-            <input type="text" name="location" required>
+        <br><br>
+        <label for="location"></label>
+            <input type="text" name="location" placeholder="Branch Location" required>
             @error('location')
                 <p class=errors> {{ $message }}</p>
             @enderror
         <br>
         <label for="num_of_pages">Number of Pages</label>
-            <input type="number" name="num_of_pages" required>
+            <input type="number" name="num_of_pages" id="num_of_pages" min="0" step="1" required>
             @error('num_of_pages')
                 <p class=errors> {{ $message }}</p>
             @enderror        
-        <br>
+        <br><br>
         <button type="button" onclick="callApi()" id=autofillBtn disabled> Autofill </button>
         <button type=button onclick="addAuthor()">Add Author</button>
         <button type=button onclick="removeAuthor()">Remove Author</button>
-
+        <br><br>
         <button type="submit">Add book</button>
     </form>
 </div>
+@include('footer')
 <script src="{{ asset('js/addbook.js') }}"></script>

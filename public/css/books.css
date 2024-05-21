@@ -1,0 +1,28 @@
+#allbooks{
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: baseline;
+    flex-wrap: wrap;
+    
+}
+.singlebook{
+     width: 250px;
+    height: 340px;
+    text-align: center;
+   
+}
+
+
+#filterbar{
+    height:75%;
+    width:20%;
+    
+}
+
+p
+{
+    font-size: 15px; 
+  color: #ef5959; 
+  
+}

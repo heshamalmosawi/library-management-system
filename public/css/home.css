@@ -1,0 +1,48 @@
+section{
+    padding: 3rem 9%;
+}
+.home{
+    background: url(/images/banner.jpg);
+    background-position: center;
+    background-size: cover;
+}
+.home .row{
+display: flex;
+align-items: center;
+flex-wrap: wrap;
+gap: 1.5rem;
+
+}
+.content{
+    flex: 1 1 42rem;
+}
+.btn{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ed5f0e;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+    text-decoration: none;
+}
+.home .row .content h3{
+    color: var(--black);
+    font-size: 4.5rem;
+}
+.home .row .content p{
+    color: var(--light-color);
+    font-size: 1.4rem;
+    line-height: 2;
+    padding: 1rem 0;
+}
+.home .row .books-list{
+    flex:1 1 42rem;
+    margin-top: 2rem;
+    text-align: center;
+}
+.home .row .books-list a img{
+height: 25rem;
+
+}

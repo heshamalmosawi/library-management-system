@@ -31,6 +31,11 @@ button[type="submit"]:hover {
     margin: 0 auto;
     width: 500px;
     text-align: center;
-    padding: 250px;
+    padding: 5%;
     
+}
+input[type="number"]
+ {
+    padding: 2px;
+   
 }

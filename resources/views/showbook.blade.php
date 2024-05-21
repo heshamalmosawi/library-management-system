@@ -6,7 +6,7 @@
 
 </head>
 <body>
-<!-- @include('header') -->
+    @include('header')
 
 
     <div class="book-details">
@@ -33,5 +33,6 @@
             <p>{{ $book->abstract }}</p>
         </div>
     </div>
+    @include('footer')
 </body>
 </html>
