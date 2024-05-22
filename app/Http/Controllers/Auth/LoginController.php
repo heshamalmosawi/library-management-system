@@ -44,7 +44,7 @@ class LoginController extends Controller
             session(['name'=>$user->name]);
             return redirect('/')->with('success', 'login successful');
         }
-        $staffUser = Staff::where('email', $credentials['email']->first());
+        $staffUser = Staff::where('email', $credentials['email'])->first();
         if ($staffUser && Hash::check($credentials['password'], $staffUser->hashed_pass)){
             Auth::login($staffUser);
             session(['name'=>$staffUser->name]);
