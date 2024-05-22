@@ -11,6 +11,22 @@ class Staff extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    /* Table name, because laravel looks for table of class name + 's'
+        for example here, by default it looks for table called 'staffs' so we need to give it the actual name
+    */
+    protected $table = 'staff';
+
+    /**
+     * The primary key associated with the table.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'staff_id'; /* By default, it looks for primary key called id, so we have to specify here */
+
+    protected $attributes = [
+        'is_admin' => false,
+    ];
+
     /**
      * The attributes that are mass assignable.
      *
