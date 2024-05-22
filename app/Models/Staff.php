@@ -35,7 +35,9 @@ class Staff extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password',
+        'contact_no',
+        'hashed_pass',
+        'is_admin',
     ];
 
     /**
@@ -44,7 +46,7 @@ class Staff extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
+        'hashed_pass',
         'remember_token',
     ];
 
@@ -55,6 +57,6 @@ class Staff extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
+        'hashed_pass' => 'hashed',
     ];
 }
