@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
-
+use App\Http\Controllers\Controller;
 class ProfileController extends Controller
 {
     public function showProfileForm()
@@ -16,6 +15,7 @@ class ProfileController extends Controller
 
     public function updateProfile(Request $request)
     {
+    /** @var \App\Models\User $user */
         $user = Auth::user();
 
         $request->validate([
