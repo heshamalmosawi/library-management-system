@@ -16,7 +16,11 @@
     <a class="{{ request()->is('reserve-book') ? 'active' : '' }}" href="#about">RESERVE BOOK</a>
     {{-- @if(request()) --}}
     <a class="{{ request()->is('login') ? 'active' : '' }}" href="/login">LOG IN</a>
-    <a class="{{ request()->is('register') ? 'active' : '' }}" href="/register">REGISTER</a>
+    @auth
+    <a href=/logout>LOG OUT</a>
+    @else
+        <a class="{{ request()->is('register') ? 'active' : '' }}" href="/register">REGISTER</a>
+    @endauth
 
 
   </div>

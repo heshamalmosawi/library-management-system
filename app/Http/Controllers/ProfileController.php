@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\ValidationException;
-
+use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Controller;
 class ProfileController extends Controller
 {
     public function showProfileForm()
@@ -18,17 +15,18 @@ class ProfileController extends Controller
 
     public function updateProfile(Request $request)
     {
+    /** @var \App\Models\User $user */
         $user = Auth::user();
 
         $request->validate([
             'name' => [
-                'required',
+                'nullable',
                 'string',
                 'max:25',
                 'regex:/^[a-zA-Z\s]+$/',
             ],
             'email' => [
-                'required',
+                'nullable',
                 'string',
                 'email',
                 'max:30',
@@ -36,21 +34,38 @@ class ProfileController extends Controller
                 'regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]{3,10}\.[a-zA-Z]{2,4}$/',
             ],
             'contact_no' => [
-                'required',
+                'nullable',
                 'string',
                 'digits:8',
                 'unique:users,contact_no,' . $user->id,
                 'regex:/^(3|6|1)/',
             ],
+            'password' => [
+                'nullable',
+                'string',
+                'min:8',
+                'max:20',
+                'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*[_#@$%\*\-])(?=.*[0-9])[A-Za-z0-9_#@%\*\-]+$/',
+            ],
         ]);
 
-        // Update user details
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->contact_no = $request->contact_no;
-        $user->save(); // Ensure 'save' method is recognized
+        // Update only the fields that are filled
+        if ($request->filled('name')) {
+            $user->name = $request->name;
+        }
+        if ($request->filled('email')) {
+            $user->email = $request->email;
+        }
+        if ($request->filled('contact_no')) {
+            $user->contact_no = $request->contact_no;
+        }
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+
+        $user->save();
 
         return redirect()->route('profile.show')->with('success', 'Profile updated successfully');
     }
 }
+

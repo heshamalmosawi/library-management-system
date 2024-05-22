@@ -18,7 +18,7 @@
                 @csrf
                 <h1>Login</h1>
                 <h4>Log in to access your Books</h4>
-                <input type="text" placeholder=name name=email required>
+                <input type="text" placeholder='example@email.com' name=email required>
                 <input type="password" placeholder=Password name=password required>
                 {{-- @error('password')
                     {{error}} 
