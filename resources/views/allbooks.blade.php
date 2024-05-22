@@ -56,25 +56,41 @@
 
 
 <script>
-    document.getElementById("start_date").defaultValue = "1900";
-    document.getElementById("end_date").defaultValue = "2024";
+    // document.getElementById("start_date").defaultValue = "1900";
+    // document.getElementById("end_date").defaultValue = "2024";
 
-function validateDateRange() {
-    var startDate = parseInt(document.getElementById("start_date").value);
-    var endDate = parseInt(document.getElementById("end_date").value);
+    function validateDateRange() {
+    var startDateInput = document.getElementById("start_date").value;
+    var endDateInput = document.getElementById("end_date").value;
     var startDateError = document.getElementById("start_date_error");
     var endDateError = document.getElementById("end_date_error");
 
+    // Reset error messages
     startDateError.textContent = "";
     endDateError.textContent = "";
 
-    if (isNaN(startDate) || isNaN(endDate)) {
-        startDateError.textContent = "Please enter valid years.";
+    // Parse input values
+    var startDate = startDateInput ? parseInt(startDateInput) : null;
+    var endDate = endDateInput ? parseInt(endDateInput) : null;
+
+    // Check if both values are empty, if so allow submission to show all records
+    if (startDateInput === "" && endDateInput === "") {
+        return true;
+    }
+
+    // Validate if the inputs are not numbers
+    if (startDateInput !== "" && isNaN(startDate)) {
+        startDateError.textContent = "Please enter a valid year.";
+        return false;
+    }
+    if (endDateInput !== "" && isNaN(endDate)) {
+        endDateError.textContent = "Please enter a valid year.";
         return false;
     }
 
-    if (startDate > endDate) {
-        endDateError.textContent = "End year must be greater than start year.";
+    // Validate the date range
+    if (startDate !== null && endDate !== null && startDate > endDate) {
+        endDateError.textContent = "End year must be greater than or equal to start year.";
         return false;
     }
 

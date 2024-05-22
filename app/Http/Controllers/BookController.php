@@ -19,7 +19,7 @@ class BookController extends Controller
         
         $request->validate([
           'ISBN' => 'required|digits:13',
-          'Title' => 'required|string|max:50',
+          'Title' => 'required|string|max:100',
           'Author.*' =>'required',
           'Category' => 'required',
           'BookCover' => 'required|string|max:255',
@@ -111,4 +111,54 @@ class BookController extends Controller
             return view('bookbycategory', ['category' => $category, 'books' => $books]);
         }
 
+        
+        public function editBook($book_id)
+        {
+            $book = Book::findOrFail($book_id);
+            
+            $authors = [];
+            if ($book->author) {
+                $authors = explode(', ', $book->author);
+            }
+            return view('editbook', compact('book', 'authors'));
+        }
+    
+        public function updateBook(Request $request, $book_id)
+        {
+            $request->validate([
+                'ISBN' => 'required|digits:13',
+                'title' => 'required|string|max:100',
+                'Author.*' => 'required',
+                'category' => 'required|string|max:30',
+                'bookcover_url' => 'required|string|max:255',
+                'publisher' => 'required|string|max:20',
+                'publish_date' => 'required|integer|min:1000|max:' . date('Y'),
+                'abstract' =>  'required|string', 
+                'available_copies' => 'required|integer|min:0|max:999',
+                'total_copies' => 'required|integer|min:0|max:999',
+                'location' => 'required|string|max:255',
+                'numOfPages' => 'required|integer|min:1|max:9999',
+                'is_archived' => 'boolean'
+            ]);
+    
+            $book = Book::findOrFail($book_id);
+            $book->ISBN = $request->ISBN;
+            $book->title = $request->title;
+            $authors = implode(', ', $request->input('Author.*'));
+            $book->author = $authors;
+            $book->bookcover_url = $request->bookcover_url;
+            $book->publisher = $request->publisher;
+            $book->category = $request->category;
+            $book->publish_date = $request->publish_date;
+            $book->abstract = $request->abstract;
+            $book->available_copies = $request->available_copies;
+            $book->total_copies = $request->total_copies;
+            $book->location = $request->location;
+            $book->numOfPages = $request->numOfPages;
+            $book->is_archived = $request->has('is_archived');
+    
+            $book->save();
+    
+            return redirect()->route('books.edit', ['book_id' => $book_id])->with('success', 'Book updated successfully!');
+        }
 }

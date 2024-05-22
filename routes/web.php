@@ -54,3 +54,8 @@ Route::middleware(['auth'])->group(function(){
 
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 });
+
+// routes/web.php
+
+Route::get('/books/{book_id}/edit', [BookController::class, 'editBook'])->name('books.edit');
+Route::post('/books/{book_id}/edit', [BookController::class, 'updateBook'])->name('books.update');

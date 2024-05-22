@@ -98,8 +98,9 @@ function addAuthor() {
 
     // Set the input field attributes
     inputField.type = "text";
-    inputField.name = "Author[]";
     inputField.placeholder = "Author " + authors;
+    inputField.name = "Author[]";
+   
 
     // Add the input field to the container
     container.appendChild(inputField);

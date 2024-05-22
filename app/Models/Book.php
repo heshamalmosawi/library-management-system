@@ -37,4 +37,4 @@ class Book extends Model
         'is_archived',
     ];
 
-}
+ }
