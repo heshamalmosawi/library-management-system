@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add book</title>
      <link rel="stylesheet" href="{{ asset('css/addbook.css') }}"> 
+     <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/png">
 </head>
 <style>
     .errors {

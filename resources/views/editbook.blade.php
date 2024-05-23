@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Book</title>
     <link rel="stylesheet" href="{{ asset('css/editbook.css') }}">
+    <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/png">
 </head>
 <body>
     @include('header')

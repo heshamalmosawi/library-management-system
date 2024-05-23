@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>show book by category</title>
     <link rel="stylesheet" href="{{ asset('css/bookbycategory.css') }}"> 
+    <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/png">
 </head>
 <body>
      @include('header') 
