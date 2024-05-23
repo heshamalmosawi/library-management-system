@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/category.css') }}"> 
 </head>
 <body>
-@include('header')
+    @include('header')
 
 <div class="container">
     <h1>Browse Category</h1>

@@ -10,31 +10,32 @@
         <title></title>
         <link rel="stylesheet" href="{{ asset('css/home.css') }}"> 
 <body>
+    
     @include('header')
-<section class="home" id="home">
-<div class="row">
+    <div class="container">
+        
+
+
 <div class="content">
-
-<h3>up to 55% offers</h3>
-<p>Lorem ipsum dolor sit, amet consectetur 
-    adipisicing elit. Aliquam harum tempore 
-    voluptates dolor placeat possimus labore
-     voluptate repudiandae dignissimos rem 
-    inventore eveniet molestias numquam, 
-    magni culpa fuga ad dolorum nobis?</p>
+<div class="jon">
+<h1>Welcome</h1>
+<p> Dive into a world of books with our curated selection of bestsellers,<br>
+     classics, and hidden gems. Join our community, share your thoughts, <br>
+     and find your next great read. Happy reading!<br>
+     Discover your next favorite book here. Happy reading!</p>
     <a href="/books" class="btn">Shop Now</a>
+</div>  
+    <a href="/books" ><img src="/images/book-1.jpg" alt="" ></a>
+    
 </div>
 
-<div class="swiper books">
-<div class="swiper-wrapper">
-<a href="/books" class="swiper-slide"><img src="/images/book-1.jpg" alt="" ></a>
-</div>
-<img class="stand" src="">
+
+
+
+
+
 
 </div>
-</div>
-</section>
-
     @include('footer')
 </body>
 

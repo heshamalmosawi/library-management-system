@@ -1,9 +1,9 @@
 
 <div class="bottomnav">
     
-    <a href>Privacy Policy</a>
-    <a href>Contact Us</a>
     <a href>About Us</a>
+    <a href>Contact Us</a>
+    <a href>Privacy Policy</a>
 </div>
 
 <style>

@@ -1,3 +1,7 @@
+body{
+    margin: 0;
+    padding: 10px 0;
+  }
 #allbooks{
 
     display: flex;
@@ -19,6 +23,7 @@
     margin-top: 20px;
     margin-right: 30px;
     margin-left: 30px;
+    background-color: rgb(246, 242, 242);
     
 }
 .singlebook a{
@@ -59,4 +64,31 @@ label{
     color: #333; 
     margin-bottom: 5px; 
     display: inline-block; 
+}
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .category-card {
+        flex: 1 1 45%;
+        margin-bottom: 10px;
+    }
+
+    .category-card a {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-card {
+        flex: 1 1 100%;
+    }
+    input{
+        width: 30%;
+    }
+}
+button[type="submit"]{
+    background-color: #ed5f0e;
+    color: white;
 }

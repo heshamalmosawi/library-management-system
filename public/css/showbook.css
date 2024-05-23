@@ -2,8 +2,8 @@
        body {
         
         margin: 0;
-        padding: 20px;
-        background-color: #f4f4f4;
+        padding:10px 0;
+       
         
     }
     
@@ -12,13 +12,14 @@
         flex-wrap: wrap;
         max-width: 800px;
         margin: 0 auto;
-        background-color: #fff;
+        background-color: #dee6e3;
         padding: 20px;
         border: 1px solid #ccc;
         border-radius: 5%;
-        box-shadow: 0 5px 5px rgb(255, 137, 40) ;
+        
         align-items: center;
         margin-top: 50px;
+       
 
     }
     
@@ -66,8 +67,14 @@
         
     }
     
-    .book-description p {
+    .description p {
         margin: 0;
-        
+        font-size:15px;
+        font-family: "Kanit", sans-serif;
+        font-weight: 500;
+        font-style: normal;
     }
-     
+    button[type="submit"]{
+        background-color: #ed5f0e;
+        color: white;
+    }

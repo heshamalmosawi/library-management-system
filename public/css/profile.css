@@ -1,5 +1,8 @@
 /* resources/css/profile.css */
-
+body{
+  margin: 0;
+  padding: 10px 0;
+}
 h1, h4 {
     text-align: center;
     font-family: "Teko", sans-serif;
