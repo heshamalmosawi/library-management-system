@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::dropIfExists('transactions');
+
         Schema::create('transactions', function (Blueprint $table){
             $table->id('transaction_id');
             $table->unsignedBigInteger('book_id');
-            $table->foreign('book_id')->references('id')->on('books');
+            $table->foreign('book_id')->references('book_id')->on('books');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('user_id')->on('users');
             $table->binary('transaction_type')->comment('0: Borrow, 1: Reserve');
             $table->date('transaction_date');
             $table->date('due_date');
