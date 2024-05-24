@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Borrow Books</title>
+    <title>reserve</title>
     <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/png">
+    <link rel="stylesheet" href="{{ asset('css/reserve.css') }}">
 </head>
 <body>
     @include('header')
-
+    <h1>Reserve Book</h1>
     @guest
         <script>window.location = "/login";</script>    
     @endguest
@@ -33,7 +34,7 @@
         </select>
         @endif
         <h3> Reserve for 2 until: {{ now()->addDays(2)->format('F j, Y')}} </h3>
-        <br><br>
+        
         <button type="submit">Reserve</button>
     </form>
     @include('footer')
