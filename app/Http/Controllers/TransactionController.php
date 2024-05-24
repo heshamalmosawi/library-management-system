@@ -154,7 +154,7 @@ class TransactionController extends Controller
     
         $transactions = $query->get();
     
-        return view('AllTransaction', compact('transactions'));
+        return view('allTransaction', compact('transactions'));
     }
 
 }

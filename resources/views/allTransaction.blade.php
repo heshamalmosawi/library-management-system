@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/Alltransaction.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/allTransaction.css') }}">
     <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/png">
-    <title>Alltransaction</title>
+    <title>allTransaction</title>
 </head>
 <body>
     @include('header')
@@ -17,7 +17,7 @@
 
         <!-- Filter bar -->
         <div id="filterbar"> 
-            <form method="GET" action="{{ url('/AllTransaction') }}">
+            <form method="GET" action="{{ url('/allTransaction') }}">
                 <label for="email">Filter by Email:</label>
                 <input type="text" id="email" name="email" value="{{ request('email') }}">
                 <button type="submit" class="sub">Filter</button> 

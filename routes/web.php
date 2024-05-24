@@ -55,7 +55,7 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/returnbook', [TransactionController::class, 'showReturn']);
         Route::post('/returnbook', [TransactionController::class, 'returnAction']);
  
-        Route::get('/AllTransaction', [TransactionController::class, 'showTransaction']);
+        Route::get('/allTransaction', [TransactionController::class, 'showTransaction']);
 
 
 
