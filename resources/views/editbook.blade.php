@@ -91,14 +91,16 @@
             <label for="is_archived">Archive Book</label>
             <input type="checkbox" name="is_archived" {{ old('is_archived', $book->is_archived) ? 'checked' : '' }}>
 
+            <button type=button onclick="addAuthor()">Add Author</button>
+            <button type=button onclick="removeAuthor()">Remove Author</button>
+
             <button type="submit" id="update-button">Update Book</button>
 
             @if(session('success'))
                 <div style="color: green;">{{ session('success') }}</div>
             @endif
         </form>
-        <button type=button onclick="addAuthor()">Add Author</button>
-        <button type=button onclick="removeAuthor()">Remove Author</button>
+
     </div>
     @include('footer')
 </body>

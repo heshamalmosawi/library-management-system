@@ -103,7 +103,13 @@ h1, h4 {
     width: 80px;
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #ccc;
+    border: 1px solid #4e1919;
     border-radius: 5px;
     box-sizing: border-box;
   }
+
+button[type="button"]{
+    background-color: #ed5f0e;
+    color: white;
+    margin-bottom: 5px;
+}
