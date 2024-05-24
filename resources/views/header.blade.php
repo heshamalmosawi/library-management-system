@@ -21,9 +21,10 @@
     <a class="{{ request()->is('reserve') ? 'active' : '' }}" href="/reserve">RESERVE BOOK</a>
     @if(session('userType') == 'staff')
         <a class="{{ request()->is('returnbook') ? 'active' : '' }}" href="/returnbook">RETURN BOOK</a>
+        <a class="{{ request()->is('/') ? 'active' : '' }}" href="/AllTransaction">All TRANSACTION</a>
     @endif
     @auth
-        <a class="{{ request()->is('profile') ? 'active' : '' }}" href="/profile">EDIT PROFILE</a>
+        <a class="{{ request()->is('profile') ? 'active' : '' }}" href="/profile">PROFILE</a>
         <a href=/logout>LOG OUT</a>
     @else
         <a class="{{ request()->is('login') ? 'active' : '' }}" href="/login">LOG IN</a>

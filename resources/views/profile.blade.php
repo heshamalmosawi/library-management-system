@@ -41,6 +41,44 @@
             @endif
         </form>
     </div>
-    @include('footer')
+</div>
+@if (session('userType') == 'student')
+<div id="transactions-container">
+    <h2>My Transactions</h2>
+    <h3> Date:{{$mytime = Carbon\Carbon::now()->format('d-m-Y');}}</h3>
+    <h3> Time:{{$mytime = Carbon\Carbon::now()->format('H:i:s');}}</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Book Title</th>
+                <th>ISBN</th>
+                <th>Due Date</th>
+                <th>Returned</th>
+                <th>Transaction Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($transactions as $transaction)
+                <tr>
+                    <td>{{ $transaction->book->title }}</td>
+                    <td>{{ $transaction->book->ISBN }}</td>
+                    <td>{{ $transaction->due_date }}</td>
+                    <td>{{ $transaction->is_returned ? 'Yes' : 'No' }}</td>
+                    @if ($transaction->transaction_type== 0)
+                    <td>Borrow</td> 
+                    @else
+                    <td>Reserve</td> 
+                    @endif
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+@endif 
+
+@include('footer')
+
+ 
 </body>
 </html>

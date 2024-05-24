@@ -1,0 +1,90 @@
+#transactions-container {
+    margin: 20px auto;
+    width: 80%;
+    text-align: center;
+}
+
+#transactions-container h2 {
+    text-align: center;
+    font-family: "Teko", sans-serif;
+    font-weight: 500;
+}
+
+#transactions-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#transactions-container th, #transactions-container td {
+    padding: 12px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+#transactions-container th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+#transactions-container tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#transactions-container tr:hover {
+    background-color: #f1f1f1;
+}
+#filterbar {
+    height: 75%;
+    width: 20%;
+    margin: 0 auto;
+    padding: 1%;
+    border: 1px solid #ccc;
+    border-radius: 5%;
+    box-shadow: 0 5px 5px #ed5f0e;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f9f9f9;
+}
+
+#filterbar form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#filterbar label, 
+#filterbar input, 
+#filterbar select, 
+#filterbar button {
+    width: 100%;
+    margin: 5px 0;
+}
+
+#filterbar input, 
+#filterbar select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+#filterbar button {
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #ed5f0e;
+    color: white;
+    cursor: pointer;
+}
+
+#filterbar button:hover {
+    background-color: #d4570d;
+}
+
+#filterbar span {
+    color: red;
+    font-size: 12px;
+}

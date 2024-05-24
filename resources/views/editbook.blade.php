@@ -63,12 +63,12 @@
                 <div style="color: red;">{{ $message }}</div>
             @enderror
             <label for="">Available Copies</label>
-            <input type="number" placeholder="Available Copies" name="available_copies" value="{{ old('available_copies', $book->available_copies) }}">
+            <input type="number" id="available_copies" placeholder="Available Copies" name="available_copies" value="{{ old('available_copies', $book->available_copies) }}">
             @error('available_copies')
                 <div style="color: red;">{{ $message }}</div>
             @enderror
             <label for="">Total Copies</label>
-            <input type="number" placeholder="Total Copies" name="total_copies" value="{{ old('total_copies', $book->total_copies) }}">
+            <input type="number" id="total_copies" placeholder="Total Copies" name="total_copies" value="{{ old('total_copies', $book->total_copies) }}">
             @error('total_copies')
                 <div style="color: red;">{{ $message }}</div>
             @enderror
@@ -98,5 +98,23 @@
     @include('footer')
 </body>
 </html>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var availableCopiesInput = document.getElementById('available_copies');
+        var totalCopiesInput = document.getElementById('total_copies');
+
+        function adjustAvailableCopies() {
+            var availableCopies = parseInt(availableCopiesInput.value, 10);
+            var totalCopies = parseInt(totalCopiesInput.value, 10);
+
+            if (availableCopies > totalCopies) {
+                availableCopiesInput.value = totalCopies;
+            }
+        }
+
+        availableCopiesInput.addEventListener('input', adjustAvailableCopies);
+        totalCopiesInput.addEventListener('input', adjustAvailableCopies);
+    });
+</script>
 <script src="{{ asset('js/addbook.js') }}"></script>
 

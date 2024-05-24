@@ -54,6 +54,9 @@ Route::middleware(['auth'])->group(function(){
 
         Route::get('/returnbook', [TransactionController::class, 'showReturn']);
         Route::post('/returnbook', [TransactionController::class, 'returnAction']);
+ 
+        Route::get('/AllTransaction', [TransactionController::class, 'showTransaction']);
+
 
 
     });
@@ -62,11 +65,12 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
 
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('/books/{book_id}/edit', [BookController::class, 'editBook'])->name('books.edit');
+    Route::post('/books/{book_id}/edit', [BookController::class, 'updateBook'])->name('books.update');
 });
 
 // routes/web.php
 
-Route::get('/books/{book_id}/edit', [BookController::class, 'editBook'])->name('books.edit');
-Route::post('/books/{book_id}/edit', [BookController::class, 'updateBook'])->name('books.update');
+
 
 Route::get('/addadmin', [RegisterController::class, 'addAdmin']);

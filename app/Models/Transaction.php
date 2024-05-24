@@ -36,8 +36,7 @@ class Transaction extends Model
      */
     public function book()
     {
-        // by default, eloquent will add "_id" at the end of method name, so no need to specify id name :)
-        return $this->belongsTo(Book::class); 
+        return $this->belongsTo(Book::class, 'book_id', 'book_id');
     }
 
     /**
@@ -45,6 +44,7 @@ class Transaction extends Model
      */
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
+    
 }

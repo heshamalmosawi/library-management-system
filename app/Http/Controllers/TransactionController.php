@@ -142,4 +142,19 @@ class TransactionController extends Controller
 
         return redirect('/')->with('message', 'Return successful!');
     }
+    public function showTransaction(Request $request)
+    {
+        $query = Transaction::with('book', 'user');
+    
+        if ($request->has('email') && $request->email != '') {
+            $query->whereHas('user', function($q) use ($request) {
+                $q->where('email', $request->email);
+            });
+        }
+    
+        $transactions = $query->get();
+    
+        return view('AllTransaction', compact('transactions'));
+    }
+
 }

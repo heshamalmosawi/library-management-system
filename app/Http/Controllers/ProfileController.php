@@ -6,11 +6,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
+use App\Models\Transaction;
 class ProfileController extends Controller
 {
     public function showProfileForm()
     {
-        return view('profile');
+        $user = Auth::user();
+        $transactions = Transaction::where('user_id', $user->user_id)->with('book')->get();
+    
+        return view('profile', compact('transactions'));
     }
 
     public function updateProfile(Request $request)
