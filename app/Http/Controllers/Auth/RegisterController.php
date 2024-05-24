@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\auth;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Staff;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+
 class RegisterController extends Controller
 {
     public function ShowRegistrationForm(){
@@ -60,5 +62,12 @@ class RegisterController extends Controller
         return redirect('/')->with('success', 'Registration successful!');
     }
 
-
+    public function addAdmin(){
+        $staff = new Staff();
+        $staff->name = "Sayed Hesham";
+        $staff->email = "heshamo12@gmail.com";
+        $staff->hashed_pass = Hash::make("Hesham12345-");
+        $staff->contact_no = 37733995;
+        $staff->save();
+    }
 }
