@@ -46,7 +46,7 @@ Route::post('/borrow', [TransactionController::class, 'borrowbook'])->name('borr
 
 Route::middleware(['auth'])->group(function(){
     Route::middleware(StudentMiddleWare::class)->group(function(){
-        Route::get('/borrow', [TransactionController::class, 'showBorrow']);
+        Route::get('/borrow', [TransactionController::class, 'showBorrow'])->name('borrow');
         Route::post('/borrow', [TransactionController::class, 'borrowAction']); 
         
         Route::get('/reserve', [TransactionController::class, 'showReserve']);

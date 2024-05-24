@@ -22,7 +22,9 @@
         <select name="bookoption" id="bookchoice">
             <option value="" disabled selected>Choose book</option>
             @foreach($books as $book)
-                <option value="{{ $book->ISBN }}" data-available-copies="{{ $book->available_copies }}">{{ $book->title }}</option>
+                <option value="{{ $book->ISBN }}" {{ isset($selectedBook) && $selectedBook->ISBN == $book->ISBN ? 'selected' : '' }}>
+                    {{ $book->title }}
+                </option>
             @endforeach
         </select>
         @if (session('userType') == 'staff')

@@ -11,6 +11,11 @@
 </head>
 <body>
     @include('header')
+    @if (session('userType') != 'staff')
+    <script>
+    alert('Restriced page! Only library staff can add books!')
+    window.location = "/login";</script>    
+    @endif
     <div id="edit-container">
         <form method="POST" action="{{ route('books.update', ['book_id' => $book->book_id]) }}">
             @csrf

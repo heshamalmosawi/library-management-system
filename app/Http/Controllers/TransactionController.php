@@ -11,18 +11,34 @@ use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
-    public function showBorrow()
+    public function showBorrow(Request $request)
     {
+        $selectedBook = null;
+        $isbn = $request->input('isbn');
+    
+        if ($isbn) {
+            $selectedBook = Book::where('ISBN', $isbn)->first();
+        }
+    
         if (!Auth::user()){
             return redirect('/login')->with('message', 'Page restricted! Login first!');
-        } else{ 
-            // for easier load time, pass everything to front end !
+        } else {
             if (session('userType') == 'student'){
                 $userid = session('id');
                 $transactionCount = Transaction::where('user_id', $userid)->count();
-                return view('borrow', ["books" => Book::all() , "userAmount" => $transactionCount, "users" => User::all()]);
+                return view('borrow', [
+                    "books" => Book::all(),
+                    "userAmount" => $transactionCount,
+                    "selectedBook" => $selectedBook,
+                    "users" => User::all()
+                ]);
             } else {
-                return view('borrow', ["books" => Book::all(), "userAmount" => 0, "users" => User::all() ]);
+                return view('borrow', [
+                    "books" => Book::all(),
+                    "selectedBook" => $selectedBook,
+                    "userAmount" => 0,
+                    "users" => User::all()
+                ]);
             }
         }
     }

@@ -37,6 +37,26 @@
             <strong>Description:</strong>
             <p>{{ $book->abstract }}</p>
         </div>
+        @if (session('userType') == 'student')
+        <div class="button-container">
+            <form action="/borrow" method="GET">
+                <input type="hidden" name="isbn" class="eb" value="{{ $book->ISBN }}">
+                <button type="submit">Borrow</button>
+            </form>
+        </div>
+
+        @elseif (session('userType') == 'staff')
+        <div class="button-container">
+            <form method="GET" action="{{ session('userType') == 'staff' ? route('books.edit', ['book_id' => $book->book_id]) : '#' }}">
+                <button type="submit" class="eb">Edit book</button>
+            </form>
+            <form action="/borrow" method="GET">
+                <input type="hidden" name="isbn" class="eb" value="{{ $book->ISBN }}">
+                <button type="submit">Borrow</button>
+            </form>
+        </div>
+
+        @endif
     </div>
     @include('footer')
 </body>

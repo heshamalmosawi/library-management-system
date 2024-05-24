@@ -19,6 +19,7 @@
         
         align-items: center;
         margin-top: 50px;
+        height: 600px;
        
 
     }
@@ -78,3 +79,10 @@
         background-color: #ed5f0e;
         color: white;
     }
+    
+.button-container
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
