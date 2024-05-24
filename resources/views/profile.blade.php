@@ -45,8 +45,8 @@
 @if (session('userType') == 'student')
 <div id="transactions-container">
     <h2>My Transactions</h2>
-    <h3> Date:{{$mytime = Carbon\Carbon::now()->format('d-m-Y');}}</h3>
-    <h3> Time:{{$mytime = Carbon\Carbon::now()->format('H:i:s');}}</h3>
+    <h3> Date: {{$mytime = Carbon\Carbon::now()->format('d-m-Y');}}</h3>
+    <h3> Time: {{$mytime = Carbon\Carbon::now()->setTimezone('Asia/Bahrain')->format('h:i A');}}</h3>
 
     <table>
         <thead>
