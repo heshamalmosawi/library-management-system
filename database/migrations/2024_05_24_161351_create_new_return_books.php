@@ -12,7 +12,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::dropIfExists('returned_books'); // Drop the table if it exists
 
         Schema::create('returned_books', function (Blueprint $table){
             $table->unsignedBigInteger('transaction_id');
