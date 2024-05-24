@@ -12,8 +12,10 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::dropIfExists('returned_books'); // Drop the table if it exists
+
         Schema::create('returned_books', function (Blueprint $table){
-            $table->id('transaction_id');
+            $table->unsignedBigInteger('transaction_id');
             $table->date('return_date');
             $table->double('return_fees', 6, 3);
             $table->timestamps();

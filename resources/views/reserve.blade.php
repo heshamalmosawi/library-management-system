@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>reserve</title>
+    <title>Reserve Book</title>
     <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/png">
     <link rel="stylesheet" href="{{ asset('css/reserve.css') }}">
 </head>
@@ -29,7 +29,7 @@
         <select name="studentoption" id="studentchoice">
             <option value="" disabled selected>Choose Student</option>
             @foreach($users as $user)
-                <option value="{{ $user->email }}">{{ $user->email }}</option>
+                <option value="{{ $user->user_id }}">{{ $user->email }}</option>
             @endforeach
         </select>
         @endif

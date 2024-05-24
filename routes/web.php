@@ -53,10 +53,10 @@ Route::middleware(['auth'])->group(function(){
         Route::post('/reserve', [TransactionController::class, 'reserveAction']);
 
         Route::get('/returnbook', [TransactionController::class, 'showReturn']);
+        Route::post('/returnbook', [TransactionController::class, 'returnAction']);
 
 
     });
-    // Route::middleware();
 
     Route::get('/profile', [ProfileController::class, 'showProfileForm'])->name('profile.show');
     Route::post('/profile', [ProfileController::class, 'updateProfile'])->name('profile.update');

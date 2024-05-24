@@ -16,14 +16,9 @@ class ReturnedBook extends Model
      */
     protected $table = 'returned_books';
 
-    /**
-     * The primary key associated with the table.
-     *
-     * @var string
-     */
-    protected $primaryKey = 'transaction_id';
 
     protected $fillable = [
+        'transaction_id',
         'return_date',
         'return_fees',
     ];

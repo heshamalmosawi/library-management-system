@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\ReturnedBook;
 use App\Models\User;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
@@ -12,21 +13,27 @@ class TransactionController extends Controller
 {
     public function showBorrow()
     {
-        // for easier load time, pass everything to front end !
-        if (Auth::user()){
-            $userid = Auth::user()->user_id;            
-            $transactionCount = Transaction::where('user_id', $userid)->count();
-            return view('borrow', ["books" => Book::all() , "userAmount" => $transactionCount, "users" => User::all()]);
+        if (!Auth::user()){
+            return redirect('/login')->with('message', 'Page restricted! Login first!');
+        } else{ 
+            // for easier load time, pass everything to front end !
+            if (session('userType') == 'student'){
+                $userid = session('id');
+                $transactionCount = Transaction::where('user_id', $userid)->count();
+                return view('borrow', ["books" => Book::all() , "userAmount" => $transactionCount, "users" => User::all()]);
+            } else {
+                return view('borrow', ["books" => Book::all(), "userAmount" => 0, "users" => User::all() ]);
+            }
         }
-        return view('borrow', ["books" => Book::all(), "users" => User::all()]);
     }
     
     public function borrowaction(Request $request){
+
         $foundbook = Book::where('ISBN', $request->bookoption)->first(); /* if we dont specify first it returns instance of query builder */
-        if ($request->userid){
-            $userid= $request->userid;
+        if ($request->studentoption){
+            $userid= $request->studentoption;
         } else {
-            $userid = Auth::user()->user_id;            
+            $userid = session('id');            
         }
 
         $transactionCount = Transaction::where('user_id', $userid)->count();
@@ -56,21 +63,28 @@ class TransactionController extends Controller
     }
 
     public function showReserve(){
-        // for easier load time, pass everything to front end !
-        if (Auth::user()){
-            $userid = Auth::user()->user_id;            
-            $transactionCount = Transaction::where('user_id', $userid)->count();
-            return view('reserve', ["books" => Book::all() , "userAmount" => $transactionCount, "users" => User::all()]);
+
+        if (!Auth::user()){
+            return redirect('/login')->with('message', 'Page restricted! Login first!');
+        } else{ 
+            // for easier load time, pass everything to front end !
+            if (session('userType') == 'student'){
+                $userid = session('id');
+                $transactionCount = Transaction::where('user_id', $userid)->count();
+                return view('reserve', ["books" => Book::all() , "userAmount" => $transactionCount, "users" => User::all()]);
+            } else {
+                return view('reserve', ["books" => Book::all(), "userAmount" => 0, "users" => User::all() ]);
+            }
         }
-        return view('reserve', ["books" => Book::all(), "users" => User::all(), ]);
+
     }
 
     public function reserveAction(Request $request){
         $foundbook = Book::where('ISBN', $request->bookoption)->first(); /* if we dont specify first it returns instance of query builder */
-        if ($request->userid){
-            $userid= $request->userid;
+        if ($request->studentoption){
+            $userid= $request->studentoption;
         } else {
-            $userid = Auth::user()->user_id;            
+            $userid = session('id');            
         }
 
         $transactionCount = Transaction::where('user_id', $userid)->count();
@@ -98,6 +112,34 @@ class TransactionController extends Controller
     }
 
     public function showReturn(){
-        return view('returnbook');
+        if (session('userType') != 'staff'){
+            return redirect('/login')->with('message', 'Page restricted! Refer to library staff to return book');
+        } 
+        return view('returnbook', ['users' => User::all(), 'transactions' => Transaction::all()]);
+    }
+
+    public function returnAction(Request $request){
+        $student_id = $request->studentoption;
+        $book_id = $request->bookoption;
+
+        $transaction_to_return = Transaction::where('user_id', $student_id)->where('book_id', $book_id)->first();
+
+        $return_book = new ReturnedBook();
+
+        $return_book->transaction_id = $transaction_to_return->transaction_id;
+        $return_book->return_date =  now()->toDateString();
+
+        $islate = false;
+        if (now()->gt($transaction_to_return->due_date)){ // check if due date passed
+            $daysPassed = now()->diffInDays($transaction_to_return->due_date);
+            $return_book->return_fees = 0.3 * $daysPassed; // 300 fils per day
+            $islate = true;
+        } else {
+            $return_book->return_fees = 0;
+        }
+
+        $return_book->save();
+
+        return redirect('/')->with('message', 'Return successful!');
     }
 }

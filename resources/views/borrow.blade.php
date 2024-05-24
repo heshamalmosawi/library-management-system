@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>borrow</title>
+    <title>Borrow book</title>
     <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/png">
     <link rel="stylesheet" href="{{ asset('css/borrow.css') }}">
 </head>
 <body>
     @include('header')
-<h1>Borrow Book</h1>
+    <h1>Borrow Book</h1>
     @guest
         <script>window.location = "/login";</script>    
     @endguest
@@ -29,7 +29,7 @@
         <select name="studentoption" id="studentchoice">
             <option value="" disabled selected>Choose Student</option>
             @foreach($users as $user)
-                <option value="{{ $user->email }}">{{ $user->email }}</option>
+                <option value="{{ $user->user_id }}">{{ $user->email }}</option>
             @endforeach
         </select>
         @endif
