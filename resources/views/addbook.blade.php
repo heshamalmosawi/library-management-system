@@ -13,6 +13,13 @@
     }
 </style>
 <div>
+    @if (session('userType') != 'staff')
+        <script>
+        alert('Restriced page! Only library staff can add books!')
+        window.location = "/login";</script>    
+
+    @endif
+
     @include('header')
     <!-- Nothing worth having comes easy. - Theodore Roosevelt -->
     <form method="POST" class="inputform" action="#">
