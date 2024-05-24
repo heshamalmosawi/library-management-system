@@ -9,6 +9,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Middleware\StudentMiddleWare;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,11 +45,19 @@ Route::get('/book/{book}', [BookController::class, 'show'])->name('book.show');
 Route::post('/borrow', [TransactionController::class, 'borrowbook'])->name('borrowbook');
 
 Route::middleware(['auth'])->group(function(){
-    // Route::middleware(['student'])->group(function(){
+    Route::middleware(StudentMiddleWare::class)->group(function(){
         Route::get('/borrow', [TransactionController::class, 'showBorrow']);
-        // dd(Auth::check());
+        Route::post('/borrow', [TransactionController::class, 'borrowAction']); 
+        
+        Route::get('/reserve', [TransactionController::class, 'showReserve']);
+        Route::post('/reserve', [TransactionController::class, 'reserveAction']);
 
-    // });
+        Route::get('/returnbook', [TransactionController::class, 'showReturn']);
+
+
+    });
+    // Route::middleware();
+
     Route::get('/profile', [ProfileController::class, 'showProfileForm'])->name('profile.show');
     Route::post('/profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
 
@@ -59,3 +68,5 @@ Route::middleware(['auth'])->group(function(){
 
 Route::get('/books/{book_id}/edit', [BookController::class, 'editBook'])->name('books.edit');
 Route::post('/books/{book_id}/edit', [BookController::class, 'updateBook'])->name('books.update');
+
+Route::get('/addadmin', [RegisterController::class, 'addAdmin']);

@@ -6,7 +6,9 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Routing\Controllers\Middleware;
 use Symfony\Component\HttpFoundation\Response;
+
 
 class StudentMiddleWare
 {
@@ -17,7 +19,6 @@ class StudentMiddleWare
      */
     public function handle(Request $request, Closure $next): Response
     {
-        dd('heym');
         Log::info('User is authenticated: ' . Auth::user()->name);
 
         if (Auth::check()) {
