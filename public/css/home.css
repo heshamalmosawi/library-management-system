@@ -5,16 +5,13 @@ body{
 .container{
     background: url(/images/wallpaper.jpg);
     height: 780px;
-
+    background-size: cover;
+    
 }
 section{
     padding: 3rem 9%;
 }
-.home{
-    /* background: url(/images/banner.jpg); */
-    background-position: center;
-    background-size: cover;
-}
+
 
 .content{
    text-align: center;
