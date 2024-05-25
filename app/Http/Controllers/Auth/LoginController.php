@@ -41,13 +41,20 @@ class LoginController extends Controller
         if ($user && Hash::check($credentials['password'], $user->hashed_pass)) {
             // Log in the user using the Auth facade
             Auth::login($user);
-            session(['id' => $user->user_id,'name'=>$user->name, 'userType'=>"student"]);
+            session(['id' => $user->user_id,'name'=>$user->name, 'userType'=>"student",'is_admin'=>false]);
             return redirect('/')->with('success', 'Login successful');
         }
         $staffUser = Staff::where('email', $credentials['email'])->first();
         if ($staffUser && Hash::check($credentials['password'], $staffUser->hashed_pass)){
             Auth::login($staffUser);
-            session(['id' => $staffUser->staff_id,'name'=>$staffUser->name, 'userType'=>"staff"]);
+            if ($staffUser->is_admin)
+            {
+                session(['id' => $staffUser->staff_id,'name'=>$staffUser->name, 'userType'=>"staff",'is_admin'=>true]);
+            }else
+            {
+                session(['id' => $staffUser->staff_id,'name'=>$staffUser->name, 'userType'=>"staff",'is_admin'=>false]);
+            }
+           
             return redirect('/')->with('success', 'Login successful');
         }
         // If authentication fails, return an error message

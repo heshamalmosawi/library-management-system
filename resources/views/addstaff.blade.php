@@ -15,6 +15,11 @@
 <body>
  
     @include('header')
+    @if (!session('is_admin'))
+    <script>
+    alert('Restriced page! Only library admin can add staff!')
+    window.location = "/login";</script>    
+    @endif
     <div id="signup-container">
         <form method="post" action="#" name=session value=register>
             @csrf 

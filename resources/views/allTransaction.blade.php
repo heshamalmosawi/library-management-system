@@ -10,6 +10,11 @@
 </head>
 <body>
     @include('header')
+    @if (!session('is_admin'))
+    <script>
+    alert('Restriced page! Only library admin can show all Transaction!')
+    window.location = "/login";</script>    
+    @endif
     <div id="transactions-container">
         <h2>All Transactions</h2>
         <h3> Date: {{$mytime = Carbon\Carbon::now()->format('d-m-Y');}}</h3>
