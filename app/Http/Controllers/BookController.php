@@ -57,13 +57,7 @@ class BookController extends Controller
         $book = Book::where('ISBN', $book)->firstOrFail();
         return view('showbook', compact('book'));
     }
-    // public function showBooksByCategory($category)
-    // {
-    //     // Retrieve all books that belong to the given category
-    //     $books = Book::where('category', $category)->get();
 
-    //     return view('bookbycategory', ['category' => $category, 'books' => $books]);
-    // }
     public function allBooksPage(Request $request)
     {
         // Get all books
@@ -83,7 +77,7 @@ class BookController extends Controller
         }
 
         // Retrieve filtered books or all books if no filters provided
-        $books = $query->get();
+        $books = $query->where('is_archived', false)->get();
 
 
 
@@ -98,7 +92,7 @@ class BookController extends Controller
         public function showCategories()
         {
             // Retrieve all categories from the books table
-            $categories = Book::distinct()->pluck('category')->unique();
+            $categories = Book::where('is_archived', false)->distinct()->pluck('category');
 
             return view('category', ['categories' => $categories]);
         }  
@@ -106,7 +100,7 @@ class BookController extends Controller
         public function showBooksByCategory($category)
         {
             // Retrieve all books that belong to the given category
-            $books = Book::where('category', $category)->get();
+            $books = Book::where('category', $category)->where('is_archived', false)->get();
 
             return view('bookbycategory', ['category' => $category, 'books' => $books]);
         }
@@ -165,8 +159,8 @@ class BookController extends Controller
         {
             $query = $request->input('name');
             
-            $books = Book::where('title', 'LIKE', "%{$query}%")
-                         ->orWhere('ISBN', 'LIKE', "%{$query}%")
+            $books = Book::where('title', 'LIKE', "%{$query}%")->where('is_archived', false)
+                         ->orWhere('ISBN', 'LIKE', "%{$query}%")->where('is_archived', false)
                          ->get();
     
             return view('search', compact('books'));
