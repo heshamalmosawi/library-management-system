@@ -86,3 +86,14 @@
   justify-content: space-between;
   align-items: center;
 }
+.button-container button[type="submit"]#b{
+    margin-left: 650%;
+    width: 130%;
+  margin-top: 12%;
+  
+}
+.button-container button[type="submit"]#e{
+    margin-left: 450%;
+    width: 130%;
+    margin-top: 10%;    
+}

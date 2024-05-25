@@ -8,15 +8,13 @@ body{
     background-size: cover;
     
 }
-section{
-    padding: 3rem 9%;
-}
+
 
 
 .content{
    text-align: center;
    display:flex ;
-    margin-left: 900px;
+    margin-left: 1000px;
     
 }
 .btn{
@@ -35,8 +33,8 @@ section{
 
 .logo{
     
-        width: 200px; /* Set the width to 200 pixels */
-        height: 150px; /* Set the height to 150 pixels */
+        width: 200px;
+        height: 150px; 
     
 }
 h1{
@@ -82,6 +80,7 @@ img{
 }
 .jon{
     margin-top: 100px;
+    margin-right: 100px;
 }
 p{
     font-size: 20px;

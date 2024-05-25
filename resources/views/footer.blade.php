@@ -8,6 +8,7 @@
 
 <style>
     .bottomnav {
+        display: none;
     position: sticky; 
     bottom: 0; 
     left: 0; 

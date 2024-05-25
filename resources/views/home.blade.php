@@ -21,23 +21,21 @@
 <div class="content">
 <div class="jon">
 <h1>Welcome</h1>
-<p> Dive into a world of books with our curated selection of bestsellers,<br>
-     classics, and hidden gems. Join our community, share your thoughts, <br>
-     and find your next great read. Happy reading!<br>
-     Discover your next favorite book here. Happy reading!</p>
-    <a href="/books" class="btn">Shop Now</a>
+<p> Dive into a world of books.<br>Join our community, share your thoughts, <br>
+     and find your next great read.<br>
+     Discover your next favorite book here. <br>Happy reading!</p>
+    <a href="/books" class="btn">Read Now</a>
 </div>  
-    <a href="/books" ><img src="/images/book-1.jpg" alt="" ></a>
+    <img src="/images/book-1.jpg" alt="" >
     
 </div>
 
-
-
-
-
-
-
 </div>
+@if(session('success'))
+    <script>
+        alert("{{ session('success') }}");
+    </script>
+    @endif
     @include('footer')
 </body>
 

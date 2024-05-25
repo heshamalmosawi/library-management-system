@@ -1,13 +1,12 @@
-body{
-    padding: 10px 0;
+body {
     margin: 0;
-}
-button[type="submit"]{
+    padding: 10px 0;
+  }
+  button[type="submit"]{
     background-color: #ed5f0e;
     color: white;
-    
 }
-#transactionForm{
+#returnForm{
     height:50%;
     width:30%;
     margin: 0 auto;
@@ -17,24 +16,26 @@ button[type="submit"]{
     box-shadow: 0 5px 5px #ed5f0e ;
     margin-top: 8%;
     text-align: center;
+    
 }
-#transactionForm button{
-    width: 20%;
-    height: 30px;
+#returnForm button{
+    display: flex;
+    margin: 0 auto;
+    margin-top: 3%;
 }
 h1{
     text-align: center;
     margin-top: 3%;
 }
 @media (max-width: 768px) {
-    #transactionForm {
+    #returnForm {
        width: 70%;
     }
 }
 
 @media (max-width: 480px) {
-    #transactionForm {
-        width: 70%;
+    #returnForm {
+        width: 50%;
 
     }
 

@@ -1,3 +1,7 @@
+body {
+    margin: 0;
+    padding: 10px 0;
+  }
 #transactions-container {
     margin: 20px auto;
     width: 80%;
@@ -101,4 +105,8 @@
 #filterbar span {
     color: red;
     font-size: 12px;
+}
+button[type="submit"]{
+    background-color: #ed5f0e;
+    color: white;
 }

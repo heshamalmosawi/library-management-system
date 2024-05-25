@@ -21,6 +21,7 @@
     @endif
 
     @include('header')
+    <h1>Add Book</h1>
     <!-- Nothing worth having comes easy. - Theodore Roosevelt -->
     <form method="POST" class="inputform" action="#">
         @csrf

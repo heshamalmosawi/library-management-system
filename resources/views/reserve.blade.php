@@ -26,7 +26,7 @@
             @endforeach
         </select>
         @if (session('userType') == 'staff')
-        <select name="studentoption" id="studentchoice">
+        <select name="studentoption" id="studentchoice"style="margin-top:2%;">
             <option value="" disabled selected>Choose Student</option>
             @foreach($users as $user)
                 <option value="{{ $user->user_id }}">{{ $user->email }}</option>
@@ -38,7 +38,11 @@
         <button type="submit">Reserve</button>
     </form>
     @include('footer')
-
+    @if(session('success'))
+    <script>
+        alert("{{ session('success') }}");
+    </script>
+    @endif
     @if(session('error'))
         <script>
             alert("{{ session('error') }}");

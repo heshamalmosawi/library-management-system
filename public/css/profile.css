@@ -145,3 +145,57 @@ button[type="submit"]:hover {
 #transactions-container tr:hover {
   background-color: #f1f1f1;
 }
+@media (max-width: 768px) {
+  #profile-container {
+    width: 100%;
+    padding: 15px;
+    margin: 0 5%;
+    margin-top: 30%;
+}
+
+form h1 {
+    font-size: 24px;
+    margin-right: 20%;
+    text-align: center;
+}
+
+form h4 {
+    font-size: 16px;
+    margin-right: 0;
+    text-align: center;
+}
+}
+@media (max-width: 480px) {
+  #profile-container {
+      width: 100%;
+      padding: 15px;
+      margin: 0 5%;
+      margin-top: 30%;
+  }
+
+  form h1 {
+      font-size: 24px;
+      margin-right: 20%;
+      text-align: center;
+  }
+
+  form h4 {
+      font-size: 16px;
+      margin-right: 0;
+      text-align: center;
+  }
+}
+#downloadBtn {
+text-align: center;
+display: inline-block; 
+padding: 0.5%;
+border:none;
+color:white;
+background-color: #ed5f0e;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.downloadContainter {
+text-align: center; /* Center the button horizontally */
+}

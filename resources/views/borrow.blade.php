@@ -28,7 +28,7 @@
             @endforeach
         </select>
         @if (session('userType') == 'staff')
-        <select name="studentoption" id="studentchoice">
+        <select name="studentoption" id="studentchoice" style="margin-top:2%;">
             <option value="" disabled selected>Choose Student</option>
             @foreach($users as $user)
                 <option value="{{ $user->user_id }}">{{ $user->email }}</option>

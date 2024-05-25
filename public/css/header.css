@@ -121,4 +121,8 @@ button[type="submit"]:hover {
    .topnav a {
        padding: 8px;
    }
+   .form-search input[type=search]{
+      width: 45%;
+   }
+
 }

@@ -6,9 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Return Book</title>
     <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/png">
+    <link rel="stylesheet" href="{{ asset('css/return.css') }}">
+
 </head>
 <body>
     @include('header')
+    <h1>Return Book</h1>
     @if (session('userType') != 'staff')
         <script>
         alert('Restriced page! Only library staff can add books!')
@@ -32,9 +35,15 @@
                 <!-- Options will be populated dynamically -->
             </select>
         </div>
-        <button type="submit">Return Book</button>
+        <button type="submit">Return Book </button>
     </form>
     
+    @if(session('success'))
+    <script>
+        alert("{{ session('success') }}");
+    </script>
+    @endif
+
     @include('footer')
 </body>
 
