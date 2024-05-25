@@ -20,7 +20,7 @@
         <div class="category-card">
             <a href="{{ route('showBooksByCategory', ['category' => $category]) }}">{{ $category }}</a>
         </div>
-    @endforeach
+        @endforeach
     
     
     </div>

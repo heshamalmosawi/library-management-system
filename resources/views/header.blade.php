@@ -4,13 +4,17 @@
 <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/png">
    
 <div class="form-search">
-    <form action="#" method="post">
+    <form action="{{ route('search') }}" method="GET">
         <img src="/images/logo.png"  id="logo"alt="" >
-       
-        <input type="search" placeholder="Search..." name="name">
-       
-        <button type="submit" name="signup" >Signup</button>
+        <div class="editbtn">
+            <input type="search" placeholder="Search..." name="name">
+            <button type="submit" class="btn1">Search</button>
+            @if(Auth::User())
+            <a href="/profile"><button type="button" id="btn2">{{session('name')}}</button></a> 
+             @endif
+        </div>
     </form>
+
 </div>
 
 <div class="topnav">

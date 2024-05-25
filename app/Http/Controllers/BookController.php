@@ -98,7 +98,7 @@ class BookController extends Controller
         public function showCategories()
         {
             // Retrieve all categories from the books table
-            $categories = Book::distinct()->pluck('category');
+            $categories = Book::distinct()->pluck('category')->unique();
 
             return view('category', ['categories' => $categories]);
         }  
@@ -160,5 +160,15 @@ class BookController extends Controller
             $book->save();
     
             return redirect()->route('books.edit', ['book_id' => $book_id])->with('success', 'Book updated successfully!');
+        }
+        public function search(Request $request)
+        {
+            $query = $request->input('name');
+            
+            $books = Book::where('title', 'LIKE', "%{$query}%")
+                         ->orWhere('ISBN', 'LIKE', "%{$query}%")
+                         ->get();
+    
+            return view('search', compact('books'));
         }
 }

@@ -55,20 +55,20 @@ button[type="submit"]:hover {
     text-align: center;
    
 }
-  .form-search{
+  /* .form-search{
     margin: 0 auto;
     text-align: center;
    
-}
+} */
 
   
 
-  .form-search input[type=text] {
+  /* .form-search input[type=text] {
     
     width: 300px;
     border-radius: 20px;
     border: 2px solid #ed5f0e;
-  }
+  } */
 
   .navbar {
     background-color: #333;
@@ -112,15 +112,15 @@ button[type="submit"]:hover {
 .fa-search:hover {
   color: #dc5319; 
 }
-.form-search button[type="submit"] {
-    width: 80px; /* Adjust width as needed */
+/* .form-search button[type="submit"] {
+    width: 80px; 
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
     
-  }
+  }  */
   @media (max-width: 768px) {
     .signup-container {
        
@@ -133,9 +133,9 @@ button[type="submit"]:hover {
       font-size: 24px;
       margin-right: 25%;
   }
-form a{
+/* form a{
   margin-right: 25%;
-}
+} */
   form h4 {
       font-size: 16px;
       margin-right: 25%;
@@ -164,9 +164,9 @@ form a{
         font-size: 24px;
         margin-right: 25%;
     }
-  form a{
+  /* form a{
     margin-right: 25%;
-  }
+  } */
     form h4 {
         font-size: 16px;
         margin-right: 25%;

@@ -64,7 +64,7 @@
     <div class=downloadContainter>
         <button id="downloadBtn">Download Transactions</button>
     </div>
-    {{-- @include('footer') --}}
+    @include('footer')
 </body>
 {{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.20/jspdf.plugin.autotable.min.js"></script> --}}

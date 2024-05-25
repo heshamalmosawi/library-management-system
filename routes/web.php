@@ -74,6 +74,7 @@ Route::middleware(['auth'])->group(function(){
 
 // routes/web.php
 
+Route::get('/search', [BookController::class, 'search'])->name('search');
 
 
 Route::get('/addadmin', [RegisterController::class, 'addAdmin']);

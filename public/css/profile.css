@@ -99,14 +99,14 @@ button[type="submit"]:hover {
   color: #dc5319; 
 }
 
-.form-search button[type="submit"] {
+/* .form-search button[type="submit"] {
   width: 80px; 
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
-}
+} */
 
 /* New CSS for Transactions Table */
 #transactions-container {
