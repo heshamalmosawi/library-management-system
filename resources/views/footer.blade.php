@@ -8,7 +8,7 @@
 
 <style>
     .bottomnav {
-    position: fixed; 
+    position: sticky; 
     bottom: 0; 
     left: 0; 
     width: 100%;
@@ -16,6 +16,7 @@
     background-color: #333;
     color: #fff; 
     padding: 1.1% 0; 
+    margin-bottom: -100%;
     z-index: 999; 
 }
 

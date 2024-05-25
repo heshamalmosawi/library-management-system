@@ -75,10 +75,28 @@
         </tbody>
     </table>
 </div>
+<div class=downloadContainter>
+    <button id="downloadBtn">Download Transactions</button>
+</div>
 @endif 
 
 @include('footer')
 
  
 </body>
+<script>
+    document.getElementById('downloadBtn').addEventListener('click', function() {
+        var table = document.querySelector('table');
+        var tableContent = table.outerHTML;
+        var pageTitle = "Transactions";
+        var printWindow = window.open('', '', 'height=400,width=800');
+        printWindow.document.write('<html><head><title>' + pageTitle + '</title></head><body>');
+        printWindow.document.write('<h1>' + pageTitle + '</h1>');
+        printWindow.document.write(tableContent);
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+    });
+</script>
+</script>
 </html>

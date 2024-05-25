@@ -12,8 +12,8 @@
     @include('header')
     <div id="transactions-container">
         <h2>All Transactions</h2>
-        <h3>Date: {{ \Carbon\Carbon::now()->format('d-m-Y') }}</h3>
-        <h3>Time: {{ \Carbon\Carbon::now()->format('H:i:s') }}</h3>
+        <h3> Date: {{$mytime = Carbon\Carbon::now()->format('d-m-Y');}}</h3>
+        <h3> Time: {{$mytime = Carbon\Carbon::now()->setTimezone('Asia/Bahrain')->format('h:i A');}}</h3>
 
         <!-- Filter bar -->
         <div id="filterbar"> 
@@ -55,6 +55,27 @@
             </tbody>
         </table>
     </div>
-    @include('footer')
+
+    <div class=downloadContainter>
+        <button id="downloadBtn">Download Transactions</button>
+    </div>
+    {{-- @include('footer') --}}
 </body>
+{{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.20/jspdf.plugin.autotable.min.js"></script> --}}
+<script>
+    document.getElementById('downloadBtn').addEventListener('click', function() {
+        var table = document.querySelector('table');
+        var tableContent = table.outerHTML;
+        var pageTitle = document.title;
+        var printWindow = window.open('', '', 'height=400,width=800');
+        printWindow.document.write('<html><head><title>' + pageTitle + '</title></head><body>');
+        printWindow.document.write('<h1>' + pageTitle + '</h1>');
+        printWindow.document.write(tableContent);
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+    });
+</script>
+
 </html>

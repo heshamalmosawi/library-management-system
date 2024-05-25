@@ -21,6 +21,7 @@
     <a class="{{ request()->is('reserve') ? 'active' : '' }}" href="/reserve">RESERVE BOOK</a>
     @if(session('userType') == 'staff')
         <a class="{{ request()->is('returnbook') ? 'active' : '' }}" href="/returnbook">RETURN BOOK</a>
+        <a class="{{ request()->is('addbook') ? 'active' : '' }}" href="/addbook">ADD BOOK</a>
         <a class="{{ request()->is('allTransaction') ? 'active' : '' }}" href="/allTransaction">ALL TRANSACTION</a>
     @endif
     @auth

@@ -4,9 +4,23 @@
     text-align: center;
 }
 
+#downloadBtn {
+    text-align: center;
+    display: inline-block; 
+    padding: 0.5%;
+    border:none;
+    color:white;
+    background-color: #ed5f0e;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.downloadContainter {
+    text-align: center; /* Center the button horizontally */
+}
+
 #transactions-container h2 {
     text-align: center;
-    font-family: "Teko", sans-serif;
     font-weight: 500;
 }
 

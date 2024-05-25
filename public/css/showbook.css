@@ -11,7 +11,7 @@
         display: flex;
         flex-wrap: wrap;
         max-width: 800px;
-        margin: 0 auto;
+        margin: 1%  auto;
         background-color: #dee6e3;
         padding: 20px;
         border: 1px solid #ccc;
@@ -19,7 +19,7 @@
         
         align-items: center;
         margin-top: 50px;
-        height: 600px;
+        height: fit-content;
        
 
     }
