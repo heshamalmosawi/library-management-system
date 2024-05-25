@@ -36,10 +36,11 @@ async function callApi() {
     try {
         // API request to fetch book details
         const response = await fetch(
-            "https://www.googleapis.com/books/v1/volumes?q=ISBN:" + isbn
+            "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn
         );
         // Parse response JSON
         const data = await response.json();
+        console.log(data);
         // Extract book information from the api request
         const bookInfo = await data.items[0].volumeInfo;
 
