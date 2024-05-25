@@ -73,8 +73,8 @@ class TransactionController extends Controller
 
         $foundbook->available_copies -= 1; // Once transaction is done, the book chosen available copies will decerement
         $foundbook->save();
-
-        return redirect('/')->with('message', 'Book successfully borrowed!');
+        session()->flash('success', 'The book has been borrowed successfully!');
+        return redirect('/');
 
     }
 
@@ -124,7 +124,8 @@ class TransactionController extends Controller
 
         $foundbook->available_copies -= 1; // Once transaction is done, the book chosen available copies will decerement
         $foundbook->save();
-        return redirect('/')->with('message', 'Book successfully reserved!');
+        session()->flash('success', 'The book has been reserved successfully!');
+        return redirect('/');
     }
 
     public function showReturn(){
@@ -156,7 +157,9 @@ class TransactionController extends Controller
 
         $return_book->save();
 
-        return redirect('/')->with('message', 'Return successful!');
+
+        session()->flash('success', 'The book has been Return successfully!');
+        return redirect()->back();
     }
     public function showTransaction(Request $request)
     {

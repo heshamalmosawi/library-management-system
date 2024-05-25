@@ -42,23 +42,23 @@ class LoginController extends Controller
             // Log in the user using the Auth facade
             Auth::login($user);
             session(['id' => $user->user_id,'name'=>$user->name, 'userType'=>"student"]);
-            return redirect('/')->with('success', 'login successful');
+            return redirect('/')->with('success', 'Login successful');
         }
         $staffUser = Staff::where('email', $credentials['email'])->first();
         if ($staffUser && Hash::check($credentials['password'], $staffUser->hashed_pass)){
             Auth::login($staffUser);
             session(['id' => $staffUser->staff_id,'name'=>$staffUser->name, 'userType'=>"staff"]);
-            return redirect('/')->with('success', 'login successful');
+            return redirect('/')->with('success', 'Login successful');
         }
         // If authentication fails, return an error message
         throw ValidationException::withMessages([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => 'Email address or Password not found. Please try again.',
         ]);
     }
 
     public function logout(Request $request){
         auth()->logout();
         $request->session()->flush();
-        return redirect('/')->with('success', 'Goodbye!');
+        return redirect('/')->with('success', 'Log out successful!');
     }
 }

@@ -21,9 +21,12 @@
                 <h4>Log in to access your Books</h4>
                 <input type="text" placeholder='example@email.com' name=email required>
                 <input type="password" placeholder=Password name=password required>
-                {{-- @error('password')
-                    {{error}} 
-                @enderror --}}
+                @error('email')
+                <div style="color: red;">{{ $message }}</div>
+                @enderror
+                @error('password')
+                <div style="color: red;">{{ $message }}</div>
+                @enderror
                 <button type="submit" name=login>Login</button>
                 <div> Don't have an account? <a href="/register"><b style="color: red;">sign up</b></a></div>        
             </form>

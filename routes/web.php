@@ -67,6 +67,9 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/books/{book_id}/edit', [BookController::class, 'editBook'])->name('books.edit');
     Route::post('/books/{book_id}/edit', [BookController::class, 'updateBook'])->name('books.update');
+
+    Route::get("/addstaff", [RegisterController::class, 'ShowRegistrationFormstaff'])->name('addstaff');
+    Route::post("/addstaff", [RegisterController::class, 'RegisterStaff'])->name('addstaff');
 });
 
 // routes/web.php
