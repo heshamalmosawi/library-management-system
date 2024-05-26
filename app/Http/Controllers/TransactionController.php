@@ -139,6 +139,7 @@ class TransactionController extends Controller
         $student_id = $request->studentoption;
         $book_id = $request->bookoption;
 
+        // dd($request);
         $transaction_to_return = Transaction::where('user_id', $student_id)->where('book_id', $book_id)->first();
 
         $return_book = new ReturnedBook();
@@ -161,6 +162,7 @@ class TransactionController extends Controller
         session()->flash('success', 'The book has been Return successfully!');
         return redirect()->back();
     }
+
     public function showTransaction(Request $request)
     {
         $query = Transaction::with('book', 'user');
@@ -176,4 +178,21 @@ class TransactionController extends Controller
         return view('allTransaction', compact('transactions'));
     }
 
+    public function cancelReservation(Request $request){
+        $student_id = session('id');
+        $isbn = $request->input('isbn');
+        $book_id = Book::where('isbn', $isbn)->first()->book_id;
+
+        if (!$book_id){
+            return redirect('profile')->with('error', 'Book not found.');
+        }
+        $returnRequest = new Request([
+            'studentoption' => $student_id,
+            'bookoption' => $book_id,
+        ]);
+        // Call returnAction with the new request
+        $this->returnAction($returnRequest);
+
+        return redirect('profile')->with('success', 'Reservation canceled successfuly!');
+    }
 }

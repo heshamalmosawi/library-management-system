@@ -118,6 +118,8 @@ class RegisterController extends Controller
         $staff->email = "heshamo12@gmail.com";
         $staff->hashed_pass = Hash::make("Hesham12345-");
         $staff->contact_no = 37733995;
+        $staff->is_admin = true;
         $staff->save();
+
     }
 }

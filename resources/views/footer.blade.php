@@ -8,16 +8,16 @@
 
 <style>
     .bottomnav {
-        display: none;
-    position: sticky; 
+    /* display: none; */
+    position: fixed;
     bottom: 0; 
     left: 0; 
     width: 100%;
     text-align: center;
     background-color: #333;
     color: #fff; 
-    padding: 1.1% 0; 
-    margin-bottom: -100%;
+    padding: 1.5% 0; 
+    /* margin-bottom: -100%; */
     z-index: 999; 
 }
 

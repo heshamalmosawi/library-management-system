@@ -64,6 +64,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/profile', [ProfileController::class, 'showProfileForm'])->name('profile.show');
     Route::post('/profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
 
+    Route::get('/cancel', [TransactionController::class, 'cancelReservation']); 
+    
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/books/{book_id}/edit', [BookController::class, 'editBook'])->name('books.edit');
     Route::post('/books/{book_id}/edit', [BookController::class, 'updateBook'])->name('books.update');

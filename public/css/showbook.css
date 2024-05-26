@@ -11,14 +11,14 @@
         display: flex;
         flex-wrap: wrap;
         max-width: 800px;
-        margin: 1%  auto;
+        margin: 2.5%  auto;
         background-color: #dee6e3;
         padding: 20px;
         border: 1px solid #ccc;
         border-radius: 5%;
         
         align-items: center;
-        margin-top: 50px;
+        margin-bottom: 4%;
         height: fit-content;
        
 

@@ -20,6 +20,7 @@ body {
 }
 
 .downloadContainter {
+    margin-bottom: 4%;
     text-align: center; /* Center the button horizontally */
 }
 

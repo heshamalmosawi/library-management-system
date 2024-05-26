@@ -56,6 +56,7 @@
                 <th>Due Date</th>
                 <th>Returned</th>
                 <th>Transaction Type</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -70,13 +71,25 @@
                     @else
                     <td>Reserve</td> 
                     @endif
+                    <td> 
+                    @if ($transaction->transaction_type == 1 && $transaction->is_returned == false)
+                    <form action="/cancel" method="GET" >
+                        <input type="hidden" name="isbn" value="{{ $transaction->book->ISBN }}">
+                        <button class="newbuttons cancel" >Cancel</button>
+                    </form>
+                    @else
+                        
+                    @endif
+
+                    </td>
+
                 </tr>
             @endforeach
         </tbody>
     </table>
 </div>
 <div class=downloadContainter>
-    <button id="downloadBtn">Download Transactions</button>
+    <button class="newbuttons">Download Transactions</button>
 </div>
 @endif 
 
