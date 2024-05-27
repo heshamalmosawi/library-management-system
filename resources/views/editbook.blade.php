@@ -89,7 +89,7 @@
             @enderror
 
             <label for="is_archived">Archive Book</label>
-            <input type="checkbox" name="is_archived" {{ old('is_archived', $book->is_archived) ? 'checked' : '' }}>
+            <input type="checkbox" name="is_archived" value=1 {{ old('is_archived', $book->is_archived) ? 'checked' : '' }}>
 
             <button type=button onclick="addAuthor()">Add Author</button>
             <button type=button onclick="removeAuthor()">Remove Author</button>
