@@ -18,24 +18,42 @@ The Online Library Management System is a web application designed to manage lib
 - Improved UX for library staff: When adding books to the library system, an auto-fill feature is available to autofill the book informations using Google Books API.
 - Borrowing, Reserving and Returning: Tracks the borrowing, returns and book reservations.
 - Transactions logging: Logs transactions for both students and library admins.
+
 ## Usage
+
+### With Docker
+
+1. Ensure you have [Docker](https://www.docker.com/get-started) installed on your machine.
+2. Build the Docker image and run the container:
+
+    - **Linux & macOS:**
+        ```sh
+        bash rundocker.sh
+        ```
+
+    - **Windows:**
+        - Copy the script from `rundocker.sh` and run it in your preferred CLI.
+3. Access the application at `http://localhost:8000`.
+
+### Without Docker
+
 1. [Install Composer & Laravel](https://laravel.com/docs/11.x/installation)
 2. [Install SQLite](https://www.sqlite.org/download.html)
 3. Open the project directory and install the dependencies needed:
-```
-composer install
+```sh
+    composer update && composer install
 ```
 4. Run the database migrations:
-```
-php artisan migrate
+```sh
+    php artisan migrate
 ```
 5. Run the project using:
-```
-php artisan serve
+```sh
+    php artisan serve
 ```
 
 ## Adding the first staff member
-To add the first staff member, you can naviage to: app/`Http/Controllers/Auth/RegisterController.php` , at the end of the class you will find an addAdmin function that you can change the default admin user details and then navigate to the `/addAdmin` page and the user will be added as admin. This function of course, would be removed in case the website is hosted.
+To add the first staff member, you can naviage to: app/`Http/Controllers/Auth/RegisterController.php` , at the end of the class you will find an addAdmin function that you can change the default admin user details and then navigate to the `/addAdmin` page and the user will be added as admin. This function of course, would be removed in case the website goes to production.
 		
 ## Contributors
 		
